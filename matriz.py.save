@@ -1,0 +1,16 @@
+# import libraries
+
+#  function to create matriz
+
+def create_matriz(width_m, length_m):
+	for x in range(width_m):
+		for y in range(length_m):
+			print(" O | " , end ='')
+		print("\n")
+
+end = ''
+x = int( input())
+y = int( input())
+
+create_matriz(x,y)
+
