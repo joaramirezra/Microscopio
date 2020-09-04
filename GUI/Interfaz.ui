@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Encender</string>
+     <string>Iniciar</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">
@@ -104,7 +104,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Configuracion de uso&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Elemento y Tamaño&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit_2">
@@ -441,45 +441,54 @@ p, li { white-space: pre-wrap; }
      <string>Tamaños de referencia</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QPushButton" name="pushButton_8">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>100</y>
-      <width>151</width>
+      <x>290</x>
+      <y>130</y>
+      <width>71</width>
       <height>25</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Manual</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Automatico</string>
-     </property>
-    </item>
+    <property name="text">
+     <string>next</string>
+    </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_3">
+   <widget class="QTextEdit" name="textEdit_6">
     <property name="geometry">
      <rect>
       <x>210</x>
       <y>130</y>
-      <width>151</width>
-      <height>25</height>
+      <width>61</width>
+      <height>21</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Elemento</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Elemento y Tamaño</string>
-     </property>
-    </item>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>100</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Posicion</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>100</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[ x1,y1]</string>
+    </property>
    </widget>
    <zorder>textEdit_9</zorder>
    <zorder>textEdit_5</zorder>
@@ -505,8 +514,10 @@ p, li { white-space: pre-wrap; }
    <zorder>label_4</zorder>
    <zorder>pushButton_5</zorder>
    <zorder>pushButton_6</zorder>
-   <zorder>comboBox_2</zorder>
-   <zorder>comboBox_3</zorder>
+   <zorder>pushButton_8</zorder>
+   <zorder>textEdit_6</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -529,9 +540,17 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Editar</string>
     </property>
+    <widget class="QMenu" name="menuModo_Operacion">
+     <property name="title">
+      <string>Modo Operacion</string>
+     </property>
+     <addaction name="actionAutomatico"/>
+     <addaction name="actionManual"/>
+    </widget>
     <addaction name="actionCalibrar"/>
     <addaction name="actionInspeccionar"/>
     <addaction name="actionTeclado"/>
+    <addaction name="menuModo_Operacion"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -615,6 +634,16 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="shortcut">
     <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="actionAutomatico">
+   <property name="text">
+    <string>Automatico</string>
+   </property>
+  </action>
+  <action name="actionManual">
+   <property name="text">
+    <string>Manual</string>
    </property>
   </action>
  </widget>
