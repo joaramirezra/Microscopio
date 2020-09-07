@@ -121,63 +121,8 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;movimiento&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Para mov manual&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>100</y>
-      <width>151</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>3x3</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>3x4</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>3x5</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>4x3</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>4x4</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>4x5</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>4x3</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>4x4</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>4x5</string>
-     </property>
-    </item>
    </widget>
    <widget class="QTextEdit" name="textEdit_3">
     <property name="geometry">
@@ -263,7 +208,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tamaño de muestra&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Agregar elemento&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit_5">
@@ -490,9 +435,29 @@ p, li { white-space: pre-wrap; }
      <string>[ x1,y1]</string>
     </property>
    </widget>
+   <widget class="QTextEdit" name="textEdit_7">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>100</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_8">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>100</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>textEdit_4</zorder>
    <zorder>textEdit_9</zorder>
    <zorder>textEdit_5</zorder>
-   <zorder>textEdit_4</zorder>
    <zorder>textEdit</zorder>
    <zorder>textEdit_3</zorder>
    <zorder>textEdit_2</zorder>
@@ -503,7 +468,6 @@ p, li { white-space: pre-wrap; }
    <zorder>progressBar</zorder>
    <zorder>spinBox</zorder>
    <zorder>spinBox_2</zorder>
-   <zorder>comboBox</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
@@ -518,6 +482,8 @@ p, li { white-space: pre-wrap; }
    <zorder>textEdit_6</zorder>
    <zorder>label_5</zorder>
    <zorder>label_6</zorder>
+   <zorder>textEdit_7</zorder>
+   <zorder>textEdit_8</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -547,10 +513,21 @@ p, li { white-space: pre-wrap; }
      <addaction name="actionAutomatico"/>
      <addaction name="actionManual"/>
     </widget>
+    <widget class="QMenu" name="menuTama_o">
+     <property name="title">
+      <string>Tamaño</string>
+     </property>
+     <addaction name="action3x3"/>
+     <addaction name="action3x4"/>
+     <addaction name="action3x5"/>
+     <addaction name="actionPredetermidado"/>
+     <addaction name="actionAgregar"/>
+    </widget>
     <addaction name="actionCalibrar"/>
     <addaction name="actionInspeccionar"/>
     <addaction name="actionTeclado"/>
     <addaction name="menuModo_Operacion"/>
+    <addaction name="menuTama_o"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -644,6 +621,31 @@ p, li { white-space: pre-wrap; }
   <action name="actionManual">
    <property name="text">
     <string>Manual</string>
+   </property>
+  </action>
+  <action name="action3x3">
+   <property name="text">
+    <string>3x3</string>
+   </property>
+  </action>
+  <action name="action3x4">
+   <property name="text">
+    <string>3x4</string>
+   </property>
+  </action>
+  <action name="action3x5">
+   <property name="text">
+    <string>3x5</string>
+   </property>
+  </action>
+  <action name="actionPredetermidado">
+   <property name="text">
+    <string>Predetermidado</string>
+   </property>
+  </action>
+  <action name="actionAgregar">
+   <property name="text">
+    <string>Agregar</string>
    </property>
   </action>
  </widget>
