@@ -241,28 +241,6 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
-    def add_element(self):
-
-        keys_string = self.Key_input.text()
-        component_string = self.new_compnent_input.text()
-
-        if(len(keys_string) < 4  and keys_string.isalpha() ):
-            if( len(component_string) == 0 ) : 
-                print('error no element ')
-            else : 
-                if(add_element(list(keys_string),list(component_string))):
-                    self.Key_input.clear()
-                    self.new_compnent_input.clear()
-                else: 
-                    print('error existing element or key')
-        else:
-            print ('error key with number or too long')
-
-
-
-
-
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
