@@ -50,7 +50,7 @@
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>20</y>
        <width>101</width>
        <height>31</height>
@@ -63,7 +63,7 @@
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>150</x>
        <y>20</y>
        <width>67</width>
        <height>21</height>
@@ -86,25 +86,10 @@
       <string>siguiente</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>52</y>
-       <width>123</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>70</x>
        <y>0</y>
        <width>121</width>
        <height>20</height>
@@ -114,7 +99,7 @@
       <string>Agregar punto</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="home_button_3">
+    <widget class="QPushButton" name="erase_last_button">
      <property name="geometry">
       <rect>
        <x>22</x>
@@ -127,7 +112,7 @@
       <string>Borrar Anterior</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="begin_button_3">
+    <widget class="QPushButton" name="restart_counting_button">
      <property name="geometry">
       <rect>
        <x>22</x>
@@ -138,6 +123,16 @@
      </property>
      <property name="text">
       <string>Reiniciar conteo</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
      </property>
     </widget>
    </widget>
@@ -262,7 +257,7 @@
       <rect>
        <x>10</x>
        <y>50</y>
-       <width>51</width>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -277,7 +272,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Letra</string>
+      <string>Letra(s)</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_15">
@@ -293,7 +288,7 @@
       <string>Agregar compuesto</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="save_element">
+    <widget class="QPushButton" name="Save_element_button">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -306,7 +301,7 @@
       <string>Agregar</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="save_element_2">
+    <widget class="QPushButton" name="replace_element_button">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -337,7 +332,7 @@
       <rect>
        <x>90</x>
        <y>50</y>
-       <width>91</width>
+       <width>101</width>
        <height>31</height>
       </rect>
      </property>
@@ -382,7 +377,7 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>236</x>
+      <x>250</x>
       <y>90</y>
       <width>461</width>
       <height>191</height>
@@ -400,8 +395,8 @@
      <rect>
       <x>710</x>
       <y>280</y>
-      <width>239</width>
-      <height>169</height>
+      <width>241</width>
+      <height>201</height>
      </rect>
     </property>
     <row>
@@ -437,21 +432,6 @@
     <row>
      <property name="text">
       <string>07</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>08</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>09</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>10</string>
      </property>
     </row>
     <column>
@@ -526,42 +506,12 @@
     </item>
     <item row="6" column="0">
      <property name="text">
-      <string>Perro</string>
+      <string>suesca</string>
      </property>
     </item>
     <item row="6" column="1">
      <property name="text">
-      <string>0.5</string>
-     </property>
-    </item>
-    <item row="7" column="0">
-     <property name="text">
-      <string>madera</string>
-     </property>
-    </item>
-    <item row="7" column="1">
-     <property name="text">
-      <string>0.5</string>
-     </property>
-    </item>
-    <item row="8" column="0">
-     <property name="text">
-      <string>horogenesis</string>
-     </property>
-    </item>
-    <item row="8" column="1">
-     <property name="text">
-      <string>0.6</string>
-     </property>
-    </item>
-    <item row="9" column="0">
-     <property name="text">
-      <string>movldeno</string>
-     </property>
-    </item>
-    <item row="9" column="1">
-     <property name="text">
-      <string>0.8</string>
+      <string>1.5</string>
      </property>
     </item>
    </widget>
@@ -581,25 +531,12 @@
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="Size_reference_button">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>460</y>
       <width>201</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tamaños de referencia</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>460</y>
-      <width>241</width>
       <height>25</height>
      </rect>
     </property>
@@ -626,7 +563,37 @@
     <addaction name="actionGuardar"/>
     <addaction name="actionGuardar_Como"/>
    </widget>
+   <widget class="QMenu" name="menuEditar">
+    <property name="title">
+     <string>Editar</string>
+    </property>
+    <widget class="QMenu" name="menuTama_o_muestra">
+     <property name="title">
+      <string>Tamaño muestra</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="separator"/>
+     <addaction name="actionDefecto_47x32"/>
+     <addaction name="action3x3"/>
+     <addaction name="action4x4"/>
+     <addaction name="actionAgregar"/>
+    </widget>
+    <addaction name="actionTeclado"/>
+    <addaction name="menuTama_o_muestra"/>
+    <addaction name="actionCalibrar"/>
+    <addaction name="actionInspeccionar"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionTutorial"/>
+    <addaction name="actionFAQ_s"/>
+    <addaction name="actionAcerca"/>
+   </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuEditar"/>
+   <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNuevo">
@@ -642,6 +609,56 @@
   <action name="actionGuardar_Como">
    <property name="text">
     <string>Guardar Como</string>
+   </property>
+  </action>
+  <action name="actionTutorial">
+   <property name="text">
+    <string>Tutorial</string>
+   </property>
+  </action>
+  <action name="actionFAQ_s">
+   <property name="text">
+    <string>FAQ's</string>
+   </property>
+  </action>
+  <action name="actionAcerca">
+   <property name="text">
+    <string>Acerca</string>
+   </property>
+  </action>
+  <action name="actionTeclado">
+   <property name="text">
+    <string>Teclado</string>
+   </property>
+  </action>
+  <action name="actionCalibrar">
+   <property name="text">
+    <string>Calibrar</string>
+   </property>
+  </action>
+  <action name="actionInspeccionar">
+   <property name="text">
+    <string>Inspeccionar</string>
+   </property>
+  </action>
+  <action name="actionDefecto_47x32">
+   <property name="text">
+    <string>Defecto(47x32)</string>
+   </property>
+  </action>
+  <action name="action3x3">
+   <property name="text">
+    <string>3x3</string>
+   </property>
+  </action>
+  <action name="action4x4">
+   <property name="text">
+    <string>4x4</string>
+   </property>
+  </action>
+  <action name="actionAgregar">
+   <property name="text">
+    <string>Agregar</string>
    </property>
   </action>
  </widget>

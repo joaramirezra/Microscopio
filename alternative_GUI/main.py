@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from GUI import *
-from funciones import *
 
 if __name__ == "__main__":
     import sys
