@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from funciones import *
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -77,9 +77,6 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
-        self.textEdit_4 = QtWidgets.QTextEdit(self.frame_5)
-        self.textEdit_4.setGeometry(QtCore.QRect(10, 50, 71, 31))
-        self.textEdit_4.setObjectName("textEdit_4")
         self.label_14 = QtWidgets.QLabel(self.frame_5)
         self.label_14.setGeometry(QtCore.QRect(10, 30, 51, 17))
         self.label_14.setObjectName("label_14")
@@ -95,9 +92,12 @@ class Ui_MainWindow(object):
         self.label_13 = QtWidgets.QLabel(self.frame_5)
         self.label_13.setGeometry(QtCore.QRect(90, 30, 67, 17))
         self.label_13.setObjectName("label_13")
-        self.textEdit_3 = QtWidgets.QTextEdit(self.frame_5)
-        self.textEdit_3.setGeometry(QtCore.QRect(90, 50, 101, 31))
-        self.textEdit_3.setObjectName("textEdit_3")
+        self.Key_input = QtWidgets.QLineEdit(self.frame_5)
+        self.Key_input.setGeometry(QtCore.QRect(10, 50, 61, 25))
+        self.Key_input.setObjectName("Key_input")
+        self.new_compnent_input = QtWidgets.QLineEdit(self.frame_5)
+        self.new_compnent_input.setGeometry(QtCore.QRect(90, 50, 91, 25))
+        self.new_compnent_input.setObjectName("new_compnent_input")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(674, 22, 171, 21))
         self.label_10.setObjectName("label_10")
@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
         self.lcdNumber.setGeometry(QtCore.QRect(880, 20, 64, 23))
         self.lcdNumber.setObjectName("lcdNumber")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(236, 90, 461, 191))
+        self.frame.setGeometry(QtCore.QRect(250, 90, 461, 191))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -235,24 +235,33 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuEditar.menuAction())
         self.menubar.addAction(self.menuAyuda.menuAction())
 
-
-        
-# action butons ------------------------------------------------------------------------------
-        self.next_button.clicked.connect(self.save_element)
-        self.lineEdit.returnPressed.connect(self.save_element)
-     
-#---------------------------------------------------------------------------------------------    
+        self.Save_element_button.clicked.connect(self.add_element)
+    
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def save_element(self):
-        element_input = self.lineEdit.text() 
-        self.lineEdit.clear()
-        print(element_input)
+
+    def add_element(self):
+
+        keys_string = self.Key_input.text()
+        component_string = self.new_compnent_input.text()
+
+        if(len(keys_string) < 4  and keys_string.isalpha() ):
+            if( len(component_string) == 0 ) : 
+                print('error no element ')
+            else : 
+                if(add_element(list(keys_string),list(component_string))):
+                    self.Key_input.clear()
+                    self.new_compnent_input.clear()
+                else: 
+                    print('error existing element or key')
+        else:
+            print ('error key with number or too long')
 
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -342,8 +351,6 @@ class Ui_MainWindow(object):
         self.action3x3.setText(_translate("MainWindow", "3x3"))
         self.action4x4.setText(_translate("MainWindow", "4x4"))
         self.actionAgregar.setText(_translate("MainWindow", "Agregar"))
-
-    
 
 
 if __name__ == "__main__":

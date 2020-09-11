@@ -252,16 +252,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QTextEdit" name="textEdit_4">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
@@ -327,13 +317,23 @@
       <string>Elemento</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_3">
+    <widget class="QLineEdit" name="Key_input">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>61</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="new_compnent_input">
      <property name="geometry">
       <rect>
        <x>90</x>
        <y>50</y>
-       <width>101</width>
-       <height>31</height>
+       <width>91</width>
+       <height>25</height>
       </rect>
      </property>
     </widget>

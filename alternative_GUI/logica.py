@@ -64,3 +64,19 @@ if __name__ == "__main__":
 	file1.close()
 
 	print(conteo_Tamano)																																																																																																																						
+
+
+# # action butons ------------------------------------------------------------------------------
+#         self.next_button.clicked.connect(self.save_element)
+#         self.lineEdit.returnPressed.connect(self.save_element)
+     
+# #---------------------------------------------------------------------------------------------    
+#         self.retranslateUi(MainWindow)
+#         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+#     def save_element(self):
+#         element_input = self.lineEdit.text() 
+#         self.lineEdit.clear()
+#         element_input = list(element_input)
+#         print(element_input)
+

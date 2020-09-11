@@ -1,11 +1,17 @@
+
+elements = []
 def turn_on():
 	print('Encendio')
 
 def turn_off():
 	print('apagado')
 
-def add_element():
-	print('Agregar')
+def add_element(key , component ):
+	print(str(key)+str(component))
+	if(len(key)==3):
+		return True
+	else:
+		return False
 
 def replace_element():
 	print('reemplazar')
@@ -39,15 +45,15 @@ def erase():
 
 
         
-# action butons ------------------------------------------------------------------------------
-        self.next_button.clicked.connect(self.save_element)
-        self.lineEdit.returnPressed.connect(self.save_element)
+# # action butons ------------------------------------------------------------------------------
+#         self.next_button.clicked.connect(self.save_element)
+#         self.lineEdit.returnPressed.connect(self.save_element)
      
-#---------------------------------------------------------------------------------------------    
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+# #---------------------------------------------------------------------------------------------    
+#         self.retranslateUi(MainWindow)
+#         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def save_element(self):
-        element_input = self.lineEdit.text() 
-        self.lineEdit.clear()
-        print(element_input)
+#     def save_element(self):
+#         element_input = self.lineEdit.text() 
+#         self.lineEdit.clear()
+#         print(element_input)
