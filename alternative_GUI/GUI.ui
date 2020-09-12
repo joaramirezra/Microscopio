@@ -374,22 +374,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>80</y>
-      <width>461</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
@@ -515,22 +499,6 @@
      </property>
     </item>
    </widget>
-   <widget class="QFrame" name="frame_3">
-    <property name="geometry">
-     <rect>
-      <x>236</x>
-      <y>290</y>
-      <width>461</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Size_reference_button">
     <property name="geometry">
      <rect>
@@ -542,6 +510,26 @@
     </property>
     <property name="text">
      <string>Tamaños de referencia</string>
+    </property>
+   </widget>
+   <widget class="plotWidgetComponents" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>90</y>
+      <width>471</width>
+      <height>181</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="plotWidgetSixze" name="graphicsView_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>280</y>
+      <width>471</width>
+      <height>181</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -662,6 +650,18 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>plotWidgetComponents</class>
+   <extends>QGraphicsView</extends>
+   <header>plotElement</header>
+  </customwidget>
+  <customwidget>
+   <class>plotWidgetSixze</class>
+   <extends>QGraphicsView</extends>
+   <header>plotSize</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
