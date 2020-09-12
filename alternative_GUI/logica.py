@@ -80,3 +80,18 @@ if __name__ == "__main__":
 #         element_input = list(element_input)
 #         print(element_input)
 
+
+# from pyqtgraph import PlotWidget
+# import numpy as np
+
+
+    #    self.begin_button.clicked.connect(self.draw_size)
+    
+    # def draw_size(self):
+    #     x = range(100)
+    #     y = [w*3 +4  for w in x]
+    #     y2 = [ w*w for w in x]
+    #     self.graphicsView.plot(x,y)
+    #     self.graphicsView_2.plot(x,y2)
+
+

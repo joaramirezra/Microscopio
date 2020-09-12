@@ -1,6 +1,8 @@
 
 elements_list = {}
 
+def move_setup(speed,step):
+    print(speed,step)
 
 
 def turn_on():

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Gestionador</class>
+ <widget class="QMainWindow" name="Gestionador">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>959</width>
-    <height>541</height>
+    <width>1109</width>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Gestionador de puntos junior de barranquilla</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>128</x>
-      <y>22</y>
+      <x>90</x>
+      <y>20</y>
       <width>491</width>
       <height>51</height>
      </rect>
@@ -36,7 +36,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>90</y>
+      <y>150</y>
       <width>235</width>
       <height>179</height>
      </rect>
@@ -47,32 +47,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Coordenadas</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>20</y>
-       <width>67</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>[0,0]</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="next_button">
      <property name="geometry">
       <rect>
@@ -139,10 +113,10 @@
    <widget class="QFrame" name="frame_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>90</y>
+      <x>30</x>
+      <y>128</y>
       <width>201</width>
-      <height>179</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -151,11 +125,11 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_11">
+    <widget class="QLabel" name="Step_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>20</y>
        <width>67</width>
        <height>21</height>
       </rect>
@@ -164,11 +138,11 @@
       <string>Avance</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_12">
+    <widget class="QLabel" name="Speed_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>70</y>
+       <y>60</y>
        <width>67</width>
        <height>17</height>
       </rect>
@@ -177,44 +151,37 @@
       <string>Velocidad</string>
      </property>
     </widget>
-    <widget class="QSpinBox" name="spinBox">
+    <widget class="QSpinBox" name="Step_spinbox">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>20</y>
+       <y>10</y>
        <width>48</width>
        <height>31</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
     </widget>
-    <widget class="QSpinBox" name="spinBox_2">
+    <widget class="QSpinBox" name="speed_spinbox">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>60</y>
+       <y>50</y>
        <width>48</width>
        <height>31</height>
       </rect>
      </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>0</y>
-       <width>151</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Confi. de movimiento</string>
+     <property name="maximum">
+      <number>10</number>
      </property>
     </widget>
     <widget class="QPushButton" name="begin_button">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
+       <y>90</y>
        <width>181</width>
        <height>31</height>
       </rect>
@@ -227,7 +194,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>140</y>
+       <y>130</y>
        <width>181</width>
        <height>31</height>
       </rect>
@@ -240,8 +207,8 @@
    <widget class="QFrame" name="frame_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>280</y>
+      <x>30</x>
+      <y>350</y>
       <width>201</width>
       <height>171</height>
      </rect>
@@ -378,7 +345,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>280</y>
+      <y>370</y>
       <width>241</width>
       <height>201</height>
      </rect>
@@ -502,8 +469,8 @@
    <widget class="QPushButton" name="Size_reference_button">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>460</y>
+      <x>30</x>
+      <y>550</y>
       <width>201</width>
       <height>25</height>
      </rect>
@@ -512,24 +479,76 @@
      <string>Tamaños de referencia</string>
     </property>
    </widget>
-   <widget class="plotWidgetComponents" name="graphicsView">
+   <widget class="PlotWidget" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>90</y>
-      <width>471</width>
-      <height>181</height>
+      <x>260</x>
+      <y>340</y>
+      <width>421</width>
+      <height>231</height>
      </rect>
     </property>
    </widget>
-   <widget class="plotWidgetSixze" name="graphicsView_2">
+   <widget class="PlotWidget" name="graphicsView_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>280</y>
-      <width>471</width>
-      <height>181</height>
+      <x>260</x>
+      <y>90</y>
+      <width>421</width>
+      <height>231</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>340</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ultimos compuestos agregados</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>100</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Coordenadas</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>100</y>
+      <width>67</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[0,0]</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>100</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Confi. de movimiento</string>
     </property>
    </widget>
   </widget>
@@ -538,7 +557,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>959</width>
+     <width>1109</width>
      <height>22</height>
     </rect>
    </property>
@@ -652,14 +671,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>plotWidgetComponents</class>
+   <class>PlotWidget</class>
    <extends>QGraphicsView</extends>
-   <header>plotElement</header>
-  </customwidget>
-  <customwidget>
-   <class>plotWidgetSixze</class>
-   <extends>QGraphicsView</extends>
-   <header>plotSize</header>
+   <header>pyqtgraph</header>
   </customwidget>
  </customwidgets>
  <resources/>
