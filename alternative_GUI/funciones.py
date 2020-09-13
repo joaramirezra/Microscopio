@@ -1,6 +1,41 @@
 
 elements_list = {}
 
+## from here are the funcion to add elements to the dict
+# elements will have this structure 
+# {key : component , count}
+# where key is the keyboard combination of tree keys
+# component is the material asociated to this combinations
+# and count is the times user see in a sample
+
+# The parameters to define a new element are :
+# it must a have maximum 3 key asociated (XYZ)
+# the key can be repeated 
+# two components can't have the same key combinatios
+
+
+def add_component(keys_combination, component):
+	elements_list[keys_combination] = { 'component': component,
+										'count':0}
+	print(elements_list)
+	return True
+
+
+def find_key(keys_combination):
+	if (keys_combination in elements_list):
+		print('exits')
+		elements_list[keys_combination]['count'] +=1
+	else :
+		print('No exists')
+	return True
+
+
+
+## 
+
+def new_element_validation(element_string):
+	pass
+
 def move_setup(speed,step):
     print(speed,step)
 
@@ -11,17 +46,8 @@ def turn_on():
 def turn_off():
 	print('apagado')
 
-def add_component(key , component ):
-	print(key,component)
-	return True
-    # if(len(key)==3):
-	# 	return True
-	# else:
-	# 	return False
-	# print(elements_list)
 
-def find_key():
-	return True
+
 
 def find_component():
 	return True
@@ -56,7 +82,9 @@ def add_to_list(value):
 # import numpy as np
 
 
-    #    self.begin_button.clicked.connect(self.draw_size)
+    #     self.graphicsView.setBackground('#3c3f58')
+    #     self.graphicsView_2.setBackground('#3c3f58')
+    #     self.begin_button.clicked.connect(self.draw_size)
     
     # def draw_size(self):
     #     x = range(100)
@@ -64,6 +92,7 @@ def add_to_list(value):
     #     y2 = [ w*w for w in x]
     #     self.graphicsView.plot(x,y)
     #     self.graphicsView_2.plot(x,y2)
+
 
 
 # function to get logic 
