@@ -1,7 +1,4 @@
 import os
-import sys
-
-
 os.system('rm elementos.csv')
 file1 = open("elementos.csv","a") 
 

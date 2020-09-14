@@ -1929,7 +1929,6 @@ class Ui_Gestionador(object):
         self.elemnt_input.returnPressed.connect(self.save_point) 
 
 # Functions 
-    
     def reference_pop(self):
         print('pop up with a image of size')
 
