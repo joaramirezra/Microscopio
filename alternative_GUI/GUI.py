@@ -1927,6 +1927,7 @@ class Ui_Gestionador(object):
         self.Size_reference_button.clicked.connect(self.reference_pop)      
         # call when enter is presed
         self.elemnt_input.returnPressed.connect(self.save_point) 
+        self.new_compnent_input.returnPressed.connect(self.add_element)
 
 # Functions 
     def reference_pop(self):
@@ -1973,19 +1974,20 @@ class Ui_Gestionador(object):
         self.last_componet_table.item(0, 1).setText(new_size)
         
     def save_point(self):
-        element_input = self.elemnt_input.text() 
-        key,size = split_input(element_input)
         
-        if( int(size) > 0 and int(size) < 17):
+        element_input = self.elemnt_input.text() 
+        key,dimention_value = split_input(element_input)
+       
+        if( int(dimention_value) > 0 and int(dimention_value) < 17):
             if(find_key(key)):
-                component_to_show = get_component(key)
-                self.update_table(component_to_show,size)
+                component,size = get_info(key,dimention_value)
+                self.update_table(component,size)
             else :
                 print("No exists")
+        else:
+            print("size out range")
             
-            print(key,size)
         self.elemnt_input.clear()
-        # here i have to have ecvaluete values
         
 #end johna funcion
 

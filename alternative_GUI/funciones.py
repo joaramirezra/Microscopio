@@ -1,6 +1,6 @@
 
 elements_list = {}
-
+points,dictonary = {}
 ## from here are the funcion to add elements to the dict
 # elements will have this structure 
 # {key : component , count}
@@ -52,6 +52,17 @@ def find_key(keys_combination):
 def get_component(keys_combination):
 	return elements_list[keys_combination].get('component')
 
+def size_translation(dimention_value):
+	index = int(dimention_value)-1
+	dim_reference = ["<0.001","0.002","0.005","0.01","0.02","0.05","0.1","0.25",
+						"0.2","0.5","1","2","3","5","10",">20"]
+	return dim_reference[index]
+
+
+def get_info(key,dimention_value):
+	component = get_component(key)
+	size = size_translation(dimention_value)
+	return component,size
 
 ## 
 
