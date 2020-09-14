@@ -1972,16 +1972,21 @@ class Ui_Gestionador(object):
         self.last_componet_table.item(0, 0).setText(new_element)
         self.last_componet_table.item(0, 1).setText(new_size)
         
-        
-
     def save_point(self):
         element_input = self.elemnt_input.text() 
+        key,size = split_input(element_input)
+        
+        if( int(size) > 0 and int(size) < 17):
+            if(find_key(key)):
+                component_to_show = get_component(key)
+                self.update_table(component_to_show,size)
+            else :
+                print("No exists")
+            
+            print(key,size)
         self.elemnt_input.clear()
         # here i have to have ecvaluete values
-        if(find_key(element_input)):
-            self.update_table(element_input,'y')
-        else :
-            print("No exists")
+        
 #end johna funcion
 
     def retranslateUi(self, Gestionador):

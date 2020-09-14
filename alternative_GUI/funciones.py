@@ -23,13 +23,34 @@ def add_component(keys_combination, component):
 def add_component_list(keys_combination):
 	elements_list[keys_combination]['count'] +=1
 
+def split_input(input_string):
+	key =[]
+	for w in list(input_string):
+		if(w.isalpha()):
+			key.append(w)
+		else :
+			break
+	key = "".join(key)
+	if(len(key)<len(input_string)):
+		size = input_string[len(key):]	
+	else :
+		size = "-1"
+
+	if(size.isdigit):
+		return key,size
+	else:
+		return key,-1
+
+
 def find_key(keys_combination):
 	if (keys_combination in elements_list):
 		elements_list[keys_combination]['count'] +=1
 		return True
 	else :
 		return False
-	
+
+def get_component(keys_combination):
+	return elements_list[keys_combination].get('component')
 
 
 ## 
