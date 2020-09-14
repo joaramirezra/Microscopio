@@ -1930,6 +1930,12 @@ class Ui_Gestionador(object):
 
 # Functions 
     def reference_pop(self):
+        # pass
+        for x in range(0,7):
+            element_change = self.last_componet_table.item(x, 0)
+            size = self.last_componet_table.item(x, 1)
+            element_change.setText("perro")
+            size.setText("gato"+str(x))
         print('pop up with a image of size')
 
     def move_init(self):
@@ -1954,29 +1960,29 @@ class Ui_Gestionador(object):
         else:
             print ('error key with number or too long')
 
-    def update_table(self):
-
-        for x in range(1,6): 
-            pass
-            # item = self.last_componet_table.item(i, 0)
-            # item.text()
-            # item.setText("ll")
-
-        # item = self.last_componet_table.item(0, 1)
-        # item.setText("kk")
+    def update_table(self,new_element,new_size):
+        # move a row elements   
+        for x in reversed(range(1,7)):
+            element_change = self.last_componet_table.item(x, 0)
+            size = self.last_componet_table.item(x, 1)
+            element_change.setText(self.last_componet_table.item(x-1, 0).text())
+            size.setText(self.last_componet_table.item(x-1, 1).text())
+        
+        # then print the new last last element 
+        self.last_componet_table.item(0, 0).setText(new_element)
+        self.last_componet_table.item(0, 1).setText(new_size)
+        
+        
 
     def save_point(self):
         element_input = self.elemnt_input.text() 
         self.elemnt_input.clear()
         # here i have to have ecvaluete values
-        find_key(element_input)
-        self.update_table()
-    
-   
-
+        if(find_key(element_input)):
+            self.update_table(element_input,'y')
+        else :
+            print("No exists")
 #end johna funcion
-
-
 
     def retranslateUi(self, Gestionador):
         _translate = QtCore.QCoreApplication.translate

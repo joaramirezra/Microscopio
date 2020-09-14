@@ -20,15 +20,16 @@ def add_component(keys_combination, component):
 	print(elements_list)
 	return True
 
+def add_component_list(keys_combination):
+	elements_list[keys_combination]['count'] +=1
 
 def find_key(keys_combination):
 	if (keys_combination in elements_list):
-		print('exits')
 		elements_list[keys_combination]['count'] +=1
+		return True
 	else :
-		print('No exists')
-	return True
-
+		return False
+	
 
 
 ## 
