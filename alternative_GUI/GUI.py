@@ -1916,7 +1916,9 @@ class Ui_Gestionador(object):
 # Plot background color
         self.graphicsView.setBackground('#3c3f58')
         self.graphicsView_2.setBackground('#3c3f58')
-
+        self.graphicsView.showGrid(x=True, y=True)
+        self.graphicsView_2.showGrid(x=True, y=True)
+        
 # callbacks 
         self.begin_button.clicked.connect(self.move_init)
         self.home_button.clicked.connect(home)
@@ -1931,14 +1933,8 @@ class Ui_Gestionador(object):
 
 # Functions 
     def reference_pop(self):
-        # pass
-        for x in range(0,7):
-            element_change = self.last_componet_table.item(x, 0)
-            size = self.last_componet_table.item(x, 1)
-            element_change.setText("perro")
-            size.setText("gato"+str(x))
-        print('pop up with a image of size')
-
+        pass
+       
     def move_init(self):
         step_setup = self.Step_spinbox.value()
         speed_setup = self.speed_spinbox.value()
@@ -1982,14 +1978,29 @@ class Ui_Gestionador(object):
             if(find_key(key)):
                 component,size = get_info(key,dimention_value)
                 self.update_table(component,size)
+                self.graphicsView.clear()
+                self.draw_size()
             else :
                 print("No exists")
         else:
             print("size out range")
             
         self.elemnt_input.clear()
-        
-#end johna funcion
+
+    def draw_size(self):
+        components_name ,components_count = count_element() 
+        print(components_name ,components_count )
+        xlabel = " - ".join(components_name)
+        x = range(len(components_count))
+        self.graphicsView.plot(x,components_count, symbol='+')
+        self.graphicsView.setLabel('bottom',xlabel)
+        self.graphicsView.setXRange(-0.2,len(components_name))
+        self.graphicsView_2.BarGraphItem(1,2)
+        # self.graphicsView_2.plot(x,y2)
+
+
+#end Johan funcion
+
 
     def retranslateUi(self, Gestionador):
         _translate = QtCore.QCoreApplication.translate

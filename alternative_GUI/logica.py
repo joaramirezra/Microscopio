@@ -64,34 +64,3 @@ if __name__ == "__main__":
 	file1.close()
 
 	print(conteo_Tamano)																																																																																																																						
-
-
-# # action butons ------------------------------------------------------------------------------
-#         self.next_button.clicked.connect(self.save_element)
-#         self.lineEdit.returnPressed.connect(self.save_element)
-     
-# #---------------------------------------------------------------------------------------------    
-#         self.retranslateUi(MainWindow)
-#         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-#     def save_element(self):
-#         element_input = self.lineEdit.text() 
-#         self.lineEdit.clear()
-#         element_input = list(element_input)
-#         print(element_input)
-
-
-# from pyqtgraph import PlotWidget
-# import numpy as np
-
-
-    #    self.begin_button.clicked.connect(self.draw_size)
-    
-    # def draw_size(self):
-    #     x = range(100)
-    #     y = [w*3 +4  for w in x]
-    #     y2 = [ w*w for w in x]
-    #     self.graphicsView.plot(x,y)
-    #     self.graphicsView_2.plot(x,y2)
-
-

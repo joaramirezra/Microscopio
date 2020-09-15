@@ -1,6 +1,7 @@
 
 elements_list = {}
-points,dictonary = {}
+# points_dictonary = {}
+
 ## from here are the funcion to add elements to the dict
 # elements will have this structure 
 # {key : component , count}
@@ -13,6 +14,14 @@ points,dictonary = {}
 # the key can be repeated 
 # two components can't have the same key combinatios
 
+def count_element():
+	elements=[]
+	size_count = []
+
+	for x in elements_list:
+		elements.append(elements_list[x]['component'])
+		size_count.append(elements_list[x]['count'])
+	return elements,size_count
 
 def add_component(keys_combination, component):
 	elements_list[keys_combination] = { 'component': component,
