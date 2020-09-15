@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
+    <width>952</width>
     <height>540</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>Contador de puntos</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="star_button">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -47,7 +47,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLCDNumber" name="lcdNumber">
+   <widget class="QLCDNumber" name="lcd_count">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -70,7 +70,7 @@
      <number>24</number>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
+   <widget class="QSpinBox" name="speed_spinBox">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -80,7 +80,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox_2">
+   <widget class="QSpinBox" name="step_spinBox">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -90,7 +90,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="box_automatic">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -107,7 +107,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Elemento y Tamaño&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="box_manual_setup">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -124,7 +124,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Para mov manual&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_3">
+   <widget class="QTextEdit" name="box_progress">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -142,7 +142,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="label_point_count">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -155,7 +155,7 @@ p, li { white-space: pre-wrap; }
      <string>puntos</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="label_step">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -168,7 +168,7 @@ p, li { white-space: pre-wrap; }
      <string>Paso</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="label_speed">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -181,7 +181,7 @@ p, li { white-space: pre-wrap; }
      <string>Velocidad</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="home_button">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -194,7 +194,7 @@ p, li { white-space: pre-wrap; }
      <string>Home</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_4">
+   <widget class="QTextEdit" name="box_add_element">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -211,7 +211,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Agregar elemento&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_5">
+   <widget class="QTextEdit" name="Box_star">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -229,7 +229,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="Erase_last_button">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -242,7 +242,7 @@ p, li { white-space: pre-wrap; }
      <string>Borrar anterior</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="restar_counter_button">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -255,7 +255,7 @@ p, li { white-space: pre-wrap; }
      <string>Reiniciar Conteo</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_9">
+   <widget class="QTextEdit" name="erase_box">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -342,7 +342,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </column>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="Tittle">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -360,7 +360,7 @@ p, li { white-space: pre-wrap; }
      <string>Sistema de gestion para el conteo de puntos</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="add_element_button">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -373,7 +373,7 @@ p, li { white-space: pre-wrap; }
      <string>Agregar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="help_size_button">
     <property name="geometry">
      <rect>
       <x>580</x>
@@ -386,7 +386,7 @@ p, li { white-space: pre-wrap; }
      <string>Tamaños de referencia</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="next_element_button">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -399,7 +399,7 @@ p, li { white-space: pre-wrap; }
      <string>next</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_6">
+   <widget class="QTextEdit" name="input_element">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -409,7 +409,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="label_position">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -422,7 +422,7 @@ p, li { white-space: pre-wrap; }
      <string>Posicion</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="label_coordinates">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -435,7 +435,7 @@ p, li { white-space: pre-wrap; }
      <string>[ x1,y1]</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_7">
+   <widget class="QTextEdit" name="new_element">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -445,7 +445,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_8">
+   <widget class="QTextEdit" name="new_key">
     <property name="geometry">
      <rect>
       <x>480</x>
@@ -455,42 +455,42 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <zorder>textEdit_4</zorder>
-   <zorder>textEdit_9</zorder>
-   <zorder>textEdit_5</zorder>
-   <zorder>textEdit</zorder>
-   <zorder>textEdit_3</zorder>
-   <zorder>textEdit_2</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>box_add_element</zorder>
+   <zorder>erase_box</zorder>
+   <zorder>Box_star</zorder>
+   <zorder>box_automatic</zorder>
+   <zorder>box_progress</zorder>
+   <zorder>box_manual_setup</zorder>
+   <zorder>star_button</zorder>
    <zorder>graphicsView</zorder>
    <zorder>graphicsView_2</zorder>
-   <zorder>lcdNumber</zorder>
+   <zorder>lcd_count</zorder>
    <zorder>progressBar</zorder>
-   <zorder>spinBox</zorder>
-   <zorder>spinBox_2</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>pushButton_3</zorder>
-   <zorder>pushButton_4</zorder>
+   <zorder>speed_spinBox</zorder>
+   <zorder>step_spinBox</zorder>
+   <zorder>label_point_count</zorder>
+   <zorder>label_step</zorder>
+   <zorder>label_speed</zorder>
+   <zorder>home_button</zorder>
+   <zorder>Erase_last_button</zorder>
+   <zorder>restar_counter_button</zorder>
    <zorder>tableWidget</zorder>
-   <zorder>label_4</zorder>
-   <zorder>pushButton_5</zorder>
-   <zorder>pushButton_6</zorder>
-   <zorder>pushButton_8</zorder>
-   <zorder>textEdit_6</zorder>
-   <zorder>label_5</zorder>
-   <zorder>label_6</zorder>
-   <zorder>textEdit_7</zorder>
-   <zorder>textEdit_8</zorder>
+   <zorder>Tittle</zorder>
+   <zorder>add_element_button</zorder>
+   <zorder>help_size_button</zorder>
+   <zorder>next_element_button</zorder>
+   <zorder>input_element</zorder>
+   <zorder>label_position</zorder>
+   <zorder>label_coordinates</zorder>
+   <zorder>new_element</zorder>
+   <zorder>new_key</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>954</width>
+     <width>952</width>
      <height>22</height>
     </rect>
    </property>

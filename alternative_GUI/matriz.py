@@ -6,13 +6,16 @@ import os
 
 matriz = []
 def create_matriz(width_m, length_m):
-	for x in range(width_m):
+	for x in range(width_m):4
 		col = []
 		for y in range(length_m):
 			col.append(0)
 		matriz.append(col)
 
+os.system('clear')
+print('ingrese el numero de filas')
 x = int( input())
+print('ingrese el numero de columnas')
 y = int( input())
 
 create_matriz(x,y)
