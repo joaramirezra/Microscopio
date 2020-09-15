@@ -6,7 +6,7 @@ import os
 
 matriz = []
 def create_matriz(width_m, length_m):
-	for x in range(width_m):
+	for x in range(width_m):4
 		col = []
 		for y in range(length_m):
 			col.append(0)

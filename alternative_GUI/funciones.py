@@ -81,7 +81,6 @@ def new_element_validation(element_string):
 def move_setup(speed,step):
     print(speed,step)
 
-
 def turn_on():
 	print('Encendio')
 
