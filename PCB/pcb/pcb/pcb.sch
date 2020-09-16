@@ -373,4 +373,16 @@ F 3 "https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf" H 6200 4050
 	1    6200 4050
 	1    0    0    -1  
 $EndComp
+Text GLabel 5450 3450 0    50   Input ~ 0
+EN_motor1
+Text GLabel 5450 3650 0    50   Input ~ 0
+Dir_motor1
+Text GLabel 5450 3550 0    50   Input ~ 0
+Step_motor1
+Text GLabel 5450 3750 0    50   Input ~ 0
+EN_motor2
+Text GLabel 5450 3950 0    50   Input ~ 0
+Dir_motor2
+Text GLabel 5450 3850 0    50   Input ~ 0
+Step_motor2
 $EndSCHEMATC
