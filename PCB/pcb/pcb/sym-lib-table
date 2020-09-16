@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name pcb-rescue)(type Legacy)(uri ${KIPRJMOD}/pcb-rescue.lib)(options "")(descr ""))
+  (lib (name Drivers)(type Legacy)(uri ${KIPRJMOD}/Driver_library/Drivers.lib)(options "")(descr ""))
 )
