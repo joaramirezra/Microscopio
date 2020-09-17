@@ -380,7 +380,7 @@ Wire Notes Line
 	7800 450  7800 6550
 Wire Notes Line
 	11200 4250 7800 4250
-Text GLabel 5750 4800 0    50   Input ~ 0
+Text GLabel 6750 4400 2    50   Input ~ 0
 Limit_switch1
 Text GLabel 5750 5000 0    50   Input ~ 0
 Limit_switch3
@@ -402,23 +402,14 @@ $EndComp
 $Comp
 L power:GND #PWR0110
 U 1 1 5F7B1284
-P 6300 5450
-F 0 "#PWR0110" H 6300 5200 50  0001 C CNN
-F 1 "GND" H 6305 5277 50  0000 C CNN
-F 2 "" H 6300 5450 50  0001 C CNN
-F 3 "" H 6300 5450 50  0001 C CNN
-	1    6300 5450
+P 6350 5400
+F 0 "#PWR0110" H 6350 5150 50  0001 C CNN
+F 1 "GND" H 6355 5227 50  0000 C CNN
+F 2 "" H 6350 5400 50  0001 C CNN
+F 3 "" H 6350 5400 50  0001 C CNN
+	1    6350 5400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6250 5400 6300 5400
-Wire Wire Line
-	6300 5450 6300 5400
-Connection ~ 6300 5400
-Wire Wire Line
-	6300 5400 6350 5400
-Wire Wire Line
-	6150 3300 6150 3400
 $Comp
 L power:+5V #PWR0111
 U 1 1 5F82A16F
@@ -528,17 +519,6 @@ F 3 "" H 1850 7450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L pcb-rescue:Mounting_Hole-Mechanical MK2
-U 1 1 5834FC19
-P 1150 7450
-F 0 "MK2" H 1250 7496 50  0000 L CNN
-F 1 "M2.5" H 1250 7405 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 1150 7450 60  0001 C CNN
-F 3 "" H 1150 7450 60  0001 C CNN
-	1    1150 7450
-	1    0    0    -1  
-$EndComp
-$Comp
 L pcb-rescue:Mounting_Hole-Mechanical MK3
 U 1 1 5834FBEF
 P 1850 6950
@@ -568,7 +548,6 @@ Wire Wire Line
 	3100 1600 2950 1600
 Wire Wire Line
 	3100 1400 2950 1400
-NoConn ~ 3100 1500
 $Comp
 L Connector:Conn_01x03_Female Motor_power_plug1
 U 1 1 5F81EFFC
@@ -580,7 +559,6 @@ F 3 "~" H 1850 1550 50  0001 C CNN
 	1    1850 1550
 	1    0    0    -1  
 $EndComp
-NoConn ~ 1650 1550
 Wire Wire Line
 	1650 1450 1550 1450
 Wire Wire Line
@@ -810,4 +788,37 @@ Wire Notes Line
 	450  4500 4500 4500
 Wire Notes Line
 	450  4850 4500 4850
+NoConn ~ 6250 5400
+Wire Wire Line
+	6150 3300 6150 3400
+Wire Wire Line
+	1650 1550 1650 1650
+Connection ~ 1650 1650
+Wire Wire Line
+	3100 1500 3100 1600
+Connection ~ 3100 1600
+$Comp
+L power:+5V #PWR0120
+U 1 1 5F6E3F0F
+P 6450 3300
+F 0 "#PWR0120" H 6450 3150 50  0001 C CNN
+F 1 "+5V" H 6465 3473 50  0000 C CNN
+F 2 "" H 6450 3300 50  0001 C CNN
+F 3 "" H 6450 3300 50  0001 C CNN
+	1    6450 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6450 3300 6450 3400
+$Comp
+L power:GND #PWR?
+U 1 1 5F6E7E9E
+P 6750 5100
+F 0 "#PWR?" H 6750 4850 50  0001 C CNN
+F 1 "GND" H 6755 4927 50  0000 C CNN
+F 2 "" H 6750 5100 50  0001 C CNN
+F 3 "" H 6750 5100 50  0001 C CNN
+	1    6750 5100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

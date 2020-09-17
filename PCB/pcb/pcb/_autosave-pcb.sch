@@ -797,17 +797,6 @@ Connection ~ 1650 1650
 Wire Wire Line
 	3100 1500 3100 1600
 Connection ~ 3100 1600
-$Comp
-L power:+5V #PWR?
-U 1 1 5F6E3F0F
-P 6450 3300
-F 0 "#PWR?" H 6450 3150 50  0001 C CNN
-F 1 "+5V" H 6465 3473 50  0000 C CNN
-F 2 "" H 6450 3300 50  0001 C CNN
-F 3 "" H 6450 3300 50  0001 C CNN
-	1    6450 3300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6450 3300 6450 3400
+NoConn ~ 6450 3400
+NoConn ~ 6350 3400
 $EndSCHEMATC
