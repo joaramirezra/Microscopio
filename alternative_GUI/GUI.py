@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from pyqtgraph import PlotWidget
 from funciones import *
 
 class Ui_Gestionador(object):
@@ -1990,14 +1991,15 @@ class Ui_Gestionador(object):
     def draw_size(self):
         components_name ,components_count = count_element() 
         print(components_name ,components_count )
+        
         xlabel = " - ".join(components_name)
-        x = range(len(components_count))
-        self.graphicsView.plot(x,components_count, symbol='+')
+        
+        x = range(len(components_count)+1)
+        print(x)
+        
+        self.graphicsView.plot(x,list(components_count), stepMode=True)
         self.graphicsView.setLabel('bottom',xlabel)
-        self.graphicsView.setXRange(-0.2,len(components_name))
-        self.graphicsView_2.BarGraphItem(1,2)
-        # self.graphicsView_2.plot(x,y2)
-
+       
 
 #end Johan funcion
 
@@ -2102,7 +2104,6 @@ class Ui_Gestionador(object):
         self.actionManual.setText(_translate("Gestionador", "Manual"))
         self.actionAutomatico.setText(_translate("Gestionador", "Automatico"))
 
-from pyqtgraph import PlotWidget
 
 if __name__ == "__main__":
     import sys
