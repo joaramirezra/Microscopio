@@ -1918,7 +1918,8 @@ class Ui_Gestionador(object):
         self.graphicsView.setBackground('#3c3f58')
         self.graphicsView_2.setBackground('#3c3f58')
         self.graphicsView.showGrid(x=True, y=True)
-        self.graphicsView_2.showGrid(x=True, y=True)
+        self.graphicsView_2.showGrid(x=True, y=True,alpha=0.2)
+        
         
 # callbacks 
         self.begin_button.clicked.connect(self.move_init)
@@ -1980,6 +1981,7 @@ class Ui_Gestionador(object):
                 component,size = get_info(key,dimention_value)
                 self.update_table(component,size)
                 self.graphicsView.clear()
+                self.graphicsView_2.clear()
                 self.draw_size()
             else :
                 print("No exists")
@@ -1997,8 +1999,18 @@ class Ui_Gestionador(object):
         x = range(len(components_count)+1)
         print(x)
         
-        self.graphicsView.plot(x,list(components_count), stepMode=True)
-        self.graphicsView.setLabel('bottom',xlabel)
+
+
+        self.graphicsView.plot(x,list(components_count), stepMode=True,fillLevel=0, brush=(0,0,255,150))
+            
+        self.graphicsView.set('bottom',xlabel)        
+
+
+
+        self.graphicsView_2.plot(x,list(components_count), stepMode=True)
+        self.graphicsView_2.setTitle('hola')
+        self.graphicsView_2.plot(orientation ='bottom' ,AxisItems =  components_name)
+
        
 
 #end Johan funcion
