@@ -1914,12 +1914,15 @@ class Ui_Gestionador(object):
         self.retranslateUi(Gestionador)
         QtCore.QMetaObject.connectSlotsByName(Gestionador)
 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # Plot background color
         self.graphicsView.setBackground('#3c3f58')
         self.graphicsView_2.setBackground('#3c3f58')
         self.graphicsView.showGrid(x=True, y=True,alpha=0.2)
         self.graphicsView_2.showGrid(x=True, y=True,alpha=0.2)
 
+#-------------------------------------------------------------------------------
 # callbacks 
         self.begin_button.clicked.connect(self.move_init)
         self.home_button.clicked.connect(home)
@@ -1932,15 +1935,18 @@ class Ui_Gestionador(object):
         self.elemnt_input.returnPressed.connect(self.save_point) 
         self.new_compnent_input.returnPressed.connect(self.add_element)
 
-# Functions 
+#-------------------------Functions---------------------------------------------
+#-------------------------------------------------------------------------------
     def reference_pop(self):
         pass
-       
+
+#-------------------------------------------------------------------------------       
     def move_init(self):
         step_setup = self.Step_spinbox.value()
         speed_setup = self.speed_spinbox.value()
         move_setup(speed_setup,step_setup)
-    
+
+#-------------------------------------------------------------------------------    
     def add_element(self):
 
         keys_string = self.Key_input.text()
@@ -1950,7 +1956,7 @@ class Ui_Gestionador(object):
             if( len(component_string) == 0 ) : 
                 print('error no element ')
             else : 
-                if(add_component(keys_string,component_string)):
+                if(add_component(keys_string,component_string) ):
                     self.Key_input.clear()
                     self.new_compnent_input.clear()
                 else: 
@@ -1958,6 +1964,7 @@ class Ui_Gestionador(object):
         else:
             print ('error key with number or too long')
 
+#-------------------------------------------------------------------------------
     def update_table(self,new_element,new_size):
         # move a row elements   
         for x in reversed(range(1,7)):
@@ -1969,14 +1976,15 @@ class Ui_Gestionador(object):
         # then print the new last last element 
         self.last_componet_table.item(0, 0).setText(new_element)
         self.last_componet_table.item(0, 1).setText(new_size)
-        
+
+#-------------------------------------------------------------------------------        
     def save_point(self):
         
         element_input = self.elemnt_input.text() 
         key,dimention_value = split_input(element_input)
        
         if( int(dimention_value) > 0 and int(dimention_value) < 17):
-            if(find_key(key)):
+            if(find_key(key)  ):
                 component,size = get_info(key,dimention_value)
                 self.update_table(component,size)
                 self.graphicsView.clear()
@@ -1989,34 +1997,31 @@ class Ui_Gestionador(object):
             
         self.elemnt_input.clear()
 
+#-------------------------------------------------------------------------------
     def draw_size(self):
         components_name ,components_count = count_element() 
-        print(components_name ,components_count )
         x = range(len(components_count)+1)
-       
+
+        self.graphicsView.plot(x,list(components_count), stepMode=True,
+                               fillLevel=0, brush=("#9fccb8"))
+        self.graphicsView_2.plot(x,list(components_count), stepMode=True,
+                                fillLevel=0, brush=("#9fccb8"))
         
+        self.label_axis(components_name,1)
 
-
-        self.graphicsView.plot(x,list(components_count), stepMode=True,fillLevel=0, brush=("#9fccb8"))
-        self.graphicsView.setTitle('Histograma frecuencia minerales')    
-
-        self.graphicsView_2.plot(x,list(components_count), stepMode=True)
-        self.graphicsView_2.setTitle('Histograma Tamaño minerales')
+#-------------------------------------------------------------------------------
+    def label_axis(self,names_componens,grah):
         
-        self.label_axis(components_name)
-
-
-    def label_axis(self,names_componens):
         x_label={}    
         number = len(names_componens)
         
         for f in range (number):
             x_label[f+0.5] = names_componens[f] 
-
         print(x_label)
-        self.graphicsView_2.getAxis('bottom').setTicks([x_label.items()])
-       
-
+        if(grah == 1 ):
+            self.graphicsView.getAxis('top').setTicks([x_label.items()])
+        elif(grah == 2):
+            self.graphicsView_2.getAxis('top').setTicks([x_label.items()])
 
 #end Johan funcion
 
