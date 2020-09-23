@@ -1919,8 +1919,13 @@ class Ui_Gestionador(object):
         self.graphicsView_2.setBackground('#3c3f58')
         self.graphicsView.showGrid(x=True, y=True)
         self.graphicsView_2.showGrid(x=True, y=True,alpha=0.2)
-        
-        
+
+
+        xdict = {0.5: '    aklhkashkjh', 1.5: '    b', 2.5: '    c', 3.5: '    d', 4.5: '    e', 5.5: '    f'}
+        print(xdict)
+        self.graphicsView_2.getAxis('bottom').setTicks([xdict.items()])
+        self.graphicsView_2.getAxis('bottom').setStyle(tickTextOffset=5)
+
 # callbacks 
         self.begin_button.clicked.connect(self.move_init)
         self.home_button.clicked.connect(home)
@@ -1993,25 +1998,26 @@ class Ui_Gestionador(object):
     def draw_size(self):
         components_name ,components_count = count_element() 
         print(components_name ,components_count )
-        
-        xlabel = " - ".join(components_name)
-        
         x = range(len(components_count)+1)
         print(x)
         
 
 
-        self.graphicsView.plot(x,list(components_count), stepMode=True,fillLevel=0, brush=(0,0,255,150))
-            
-        self.graphicsView.set('bottom',xlabel)        
-
-
+        self.graphicsView.plot(x,list(components_count), stepMode=True,fillLevel=0, brush=("#9fccb8"))
+        self.graphicsView.setTitle('Histograma frecuencia minerales')    
 
         self.graphicsView_2.plot(x,list(components_count), stepMode=True)
-        self.graphicsView_2.setTitle('hola')
-        self.graphicsView_2.plot(orientation ='bottom' ,AxisItems =  components_name)
+        self.graphicsView_2.setTitle('Histograma Tamaño minerales')
 
        
+
+        # win = pg.GraphicsWindow()
+        # stringaxis = pg.AxisItem(orientation='bottom')
+        # stringaxis.setTicks([xdict.items()])
+        # plot = win.addPlot(axisItems={'bottom': stringaxis})
+        # curve = plot.plot(list(xdict.keys()),y)
+
+
 
 #end Johan funcion
 
