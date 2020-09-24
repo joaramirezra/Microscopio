@@ -1993,17 +1993,15 @@ class Ui_Gestionador(object):
 
 #-------------------------------------------------------------------------------        
     def erase_table(self):
-
-        # move a row elements   
         for x in reversed(range(0,7)):
             element_change = self.last_componet_table.item(x, 0)
             size = self.last_componet_table.item(x, 1)
             element_change.setText("")
             size.setText("")
+            clean_file()
         
 #-------------------------------------------------------------------------------        
     def save_point(self):
-        
         element_input = self.elemnt_input.text() 
         key,dimention_value = split_input(element_input)
 

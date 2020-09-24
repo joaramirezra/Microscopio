@@ -1,60 +1,18 @@
-Hello World
-Hello World
-Hello World
-Hello World
-Hello World
-Hello World
-Hello World
-Hello World
-Hello World
-Hello World
-a-2e-3a-2e-3-
-a-5e-3-
-a-0.01-
-a-0.02-
-a-0.05-
-a-0.1-
-a-0.25-
-a-0.2-
-a-0.5-
-salita-2e-3-
-salita-0.01-
-salita-0.02-
-salita-0.05-
-sdf;2e-3
 analsita;2e-3
-analsita;5e-3
 analsita;5e-3
 analsita;0.01
 analsita;0.02
 analsita;0.05
 analsita;0.1
-analsita;0.2
-analsita;0.5
 analsita;0.25
-analsita;0.02
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;1
-analsita;>10
-analsita;>10
+analsita;0.2
+saltita;2e-3
+saltita;2e-3
+saltita;0.01
+saltita;<1e-3  
+saltita;<1e-3  
+saltita;>10
+quarzo;2e-3
+quarzo;10
+quarzo;5
 analsita;10
-analsita;10
-analsita;10
-analsita;<1e-3  
-analsita;<1e-3  
-analsita;3
-analsita;5
-analsita;2e-3
-analsita;3
-analsita;10
-analsita;2
-analsita;2
-analsita;2e-3

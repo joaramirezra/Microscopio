@@ -146,7 +146,7 @@ def reset():
 	dim_reference_1 = list(dim_reference.keys())
 	for value in dim_reference_1:
 			dim_reference[value] = 0 
-	print(dim_reference)
+
 #-------------------------------------------------------------------------------        
 def erase():
 	print('reset')
@@ -163,3 +163,9 @@ def write_file(component,size):
 	file.write(Line_to_write) 
 	file.close() 
 
+def clean_file():
+	file = open("compuestos.csv","w") 
+	file.close() 
+
+def leer_ultimo():
+	pass
