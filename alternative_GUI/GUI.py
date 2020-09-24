@@ -1910,17 +1910,20 @@ class Ui_Gestionador(object):
         self.menubar.addAction(self.menuArchivo.menuAction())
         self.menubar.addAction(self.menuEditar.menuAction())
         self.menubar.addAction(self.menuAyuda.menuAction())
-
         self.retranslateUi(Gestionador)
         QtCore.QMetaObject.connectSlotsByName(Gestionador)
 
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 # Plot background color
+        font=QtGui.QFont()
+        font.setPixelSize(10)
+        
         self.graphicsView.setBackground('#3c3f58')
         self.graphicsView_2.setBackground('#3c3f58')
         self.graphicsView.showGrid(x=True, y=True,alpha=0.2)
         self.graphicsView_2.showGrid(x=True, y=True,alpha=0.2)
+        self.graphicsView.getAxis('bottom').setStyle(tickFont = font)
 
 #-------------------------------------------------------------------------------
 # callbacks 
@@ -1929,13 +1932,24 @@ class Ui_Gestionador(object):
         self.Save_element_button.clicked.connect(self.add_element)
         self.next_button.clicked.connect(self.save_point)
         self.erase_last_button.clicked.connect(erase) 
-        self.restart_counting_button.clicked.connect(reset)
+        self.restart_counting_button.clicked.connect(self.reset_counting)
         self.Size_reference_button.clicked.connect(self.reference_pop)      
         # call when enter is presed
         self.elemnt_input.returnPressed.connect(self.save_point) 
         self.new_compnent_input.returnPressed.connect(self.add_element)
-
+        
 #-------------------------Functions---------------------------------------------
+#-------------------------------------------------------------------------------
+    def reset_counting(self):
+        self.graphicsView.clear()
+        self.graphicsView_2.clear()
+        self.erase_table()
+        
+        reset()
+        init_size_dict()
+        pass
+
+
 #-------------------------------------------------------------------------------
     def reference_pop(self):
         pass
@@ -1978,14 +1992,26 @@ class Ui_Gestionador(object):
         self.last_componet_table.item(0, 1).setText(new_size)
 
 #-------------------------------------------------------------------------------        
+    def erase_table(self):
+
+        # move a row elements   
+        for x in reversed(range(0,7)):
+            element_change = self.last_componet_table.item(x, 0)
+            size = self.last_componet_table.item(x, 1)
+            element_change.setText("")
+            size.setText("")
+        
+#-------------------------------------------------------------------------------        
     def save_point(self):
         
         element_input = self.elemnt_input.text() 
         key,dimention_value = split_input(element_input)
-       
-        if( int(dimention_value) > 0 and int(dimention_value) < 17):
-            if(find_key(key)  ):
+
+        if( int(dimention_value) >= 0 and int(dimention_value) < 16):
+            if(find_key(key) ):
                 component,size = get_info(key,dimention_value)
+                add_size_mesuare(size)
+                write_file(component,size)
                 self.update_table(component,size)
                 self.graphicsView.clear()
                 self.graphicsView_2.clear()
@@ -2000,28 +2026,31 @@ class Ui_Gestionador(object):
 #-------------------------------------------------------------------------------
     def draw_size(self):
         components_name ,components_count = count_element() 
+        size_name , size_count  = count_sizes()
+
         x = range(len(components_count)+1)
 
-        self.graphicsView.plot(x,list(components_count), stepMode=True,
+        self.graphicsView.plot(list(range(17)),list(size_count), stepMode=True,
                                fillLevel=0, brush=("#9fccb8"))
-        self.graphicsView_2.plot(x,list(components_count), stepMode=True,
-                                fillLevel=0, brush=("#9fccb8"))
         
-        self.label_axis(components_name,1)
+        self.graphicsView_2.plot(x,list(components_count), stepMode=True,
+                                 fillLevel=0, brush=("#9fccb8"))
+        
+        self.label_axis(components_name,2)
+        self.label_axis(size_name,1)
 
 #-------------------------------------------------------------------------------
     def label_axis(self,names_componens,grah):
-        
         x_label={}    
         number = len(names_componens)
         
         for f in range (number):
             x_label[f+0.5] = names_componens[f] 
-        print(x_label)
         if(grah == 1 ):
-            self.graphicsView.getAxis('top').setTicks([x_label.items()])
+            self.graphicsView.getAxis('bottom').setTicks([x_label.items()])
+            
         elif(grah == 2):
-            self.graphicsView_2.getAxis('top').setTicks([x_label.items()])
+            self.graphicsView_2.getAxis('bottom').setTicks([x_label.items()])
 
 #end Johan funcion
 
