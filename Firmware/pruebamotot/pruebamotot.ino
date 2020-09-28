@@ -1,25 +1,24 @@
-#define pin_motor 2
-int cont = 0;
+#define enable_motor1 3
+
+#include <AccelStepper.h>
+
+AccelStepper Xaxis(1, 8, 9); // pin 3 = step, pin 6 = direction
+
 void setup() {
-  pinMode(pin_motor, OUTPUT);
-  pinMode(3, OUTPUT);
-  pinMode(5, INPUT);  
-  delay(100);
-  digitalWrite(3, HIGH);
-
+  pinMode(enable_motor1, OUTPUT);
+  Xaxis.setMaxSpeed(5000);
+  Xaxis.setSpeed(600);
+  Xaxis.setCurrentPosition(0);
+  digitalWrite(enable_motor1, HIGH);
 }
-
-void mover_motor() {
-  digitalWrite(pin_motor, HIGH);
-  delayMicroseconds(500);
-  digitalWrite(pin_motor, LOW);
-  delayMicroseconds(500);
-}
-
 
 void loop() {
-    if(digitalRead(5)) digitalWrite(3, LOW);
-    else digitalWrite(3, HIGH); 
-    mover_motor();
-    
+  digitalWrite(enable_motor1, LOW);
+  Xaxis.setCurrentPosition(0);
+  while (Xaxis.currentPosition() != 3200) {
+    Xaxis.setSpeed(3200);
+    Xaxis.runSpeed();
+  }
+  digitalWrite(enable_motor1, HIGH);
+  delay(1000);
 }
