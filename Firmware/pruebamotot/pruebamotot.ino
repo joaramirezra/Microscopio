@@ -2,7 +2,7 @@
 #define dir_pin 7
 #define step_pin_1 8
 #define dir_pin_1 9
-#define VEL 3
+#define VEL 500
 
 void setup() {
   pinMode(step_pin, OUTPUT);
@@ -17,37 +17,37 @@ void setup() {
 void mover_motor() {
   digitalWrite(step_pin, HIGH);
   digitalWrite(step_pin_1, HIGH);
-  delay(VEL);
+  delayMicroseconds(VEL);
   digitalWrite(step_pin, LOW);
   digitalWrite(step_pin_1, LOW);
-  delay(VEL);
+  delayMicroseconds(VEL);
 }
 
 
 void mover_motor_1() {
   digitalWrite(step_pin_1, HIGH);
   digitalWrite(step_pin, HIGH);
-  delay(VEL);
+  delayMicroseconds(VEL);
   digitalWrite(step_pin, LOW);
   digitalWrite(step_pin_1, LOW);
-  delay(VEL);
+  delayMicroseconds(VEL);
 }
 
 void loop() {
 
   // mover derecha
   digitalWrite(dir_pin, HIGH);
-  for (int i = 0 ; i < 300; i++) mover_motor();
+  for (int i = 0 ; i < 1300; i++) mover_motor();
 
   // mover arriba
   digitalWrite(dir_pin_1, LOW);
-  for (int i = 0 ; i < 300; i++) mover_motor_1();
+  for (int i = 0 ; i < 1300; i++) mover_motor_1();
 
   // mover derecha
   digitalWrite(dir_pin, LOW);
-  for (int i = 0 ; i < 300; i++) mover_motor();
+  for (int i = 0 ; i < 1300; i++) mover_motor();
 
   // mover arriba
   digitalWrite(dir_pin_1, HIGH);
-  for (int i = 0 ; i < 300; i++) mover_motor_1();
+  for (int i = 0 ; i < 1300; i++) mover_motor_1();
 }
