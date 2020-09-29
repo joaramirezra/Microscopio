@@ -1,4 +1,7 @@
 #define enable_motor1 3
+#define enable_motor1 3
+
+
 
 #include <AccelStepper.h>
 
