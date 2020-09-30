@@ -6,7 +6,7 @@ El siguiente repositorio cuenta con la informacion recopilada durante el desarro
 
 # Autores
 
-- Johan Ramirez
+- [Johan Ramirez](https://github.com/joaramirezra)
 
 # Colaboradores
 
