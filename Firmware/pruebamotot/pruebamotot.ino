@@ -1,7 +1,8 @@
 #include <AccelStepper.h>
 
 #define enable_motor1 3
-//#define enable_motor2 4
+#define enable_motor2 4
+
 #define pasos_rev 200
 #define microPasos 16
 #define paso_Tornillo 12.5 //en milimetros
