@@ -1,11 +1,11 @@
 #include <AccelStepper.h>
 
 #define enable_motor1 3
-#define enable_motor2 4
-#define LS_1 5
+#define enable_motor2 5
+#define LS_1 4
 #define LS_2 6
 #define LS_3 7
-#define LS_4 8
+#define LS_4 10
 #define pasos_rev 200
 #define microPasos 16
 
@@ -39,10 +39,15 @@ void init_motores() {
 
 //------------------------------------------------------------------------------
 void init_limit_switch() {
-  pinMode(, INPUT);
-  pinMode(, INPUT); 
-  pinMode(, INPUT); 
-  pinMode(, INPUT);
+  pinMode(LS_1, INPUT);
+  pinMode(LS_2, INPUT);
+  pinMode(LS_3, INPUT);
+  pinMode(LS_4, INPUT);
+}
+
+//------------------------------------------------------------------------------
+int readSensor(int Sensor) {
+  return digitalRead(Sensor);
 }
 
 //------------------------------------------------------------------------------
@@ -55,25 +60,22 @@ void move_motor(int distance, int motor_enable , int motor) {
 
 //------------------------------------------------------------------------------
 void go_to_Home() {
-  int cont = 5;
-  while (cont > 0) { // this condition must be replaced by limit swich
+  while (readSensor(LS_2) == 0) { // this condition must be replaced by limit swich
     move_motor(1, enable_motor1, 1);
-    cont--;
+    delay(10);
   }
-  delay(1000);
-  cont = 5;
-  while (cont > 0) {
+  while (readSensor(LS_3) == 0) { // this condition must be replaced by limit swich
     move_motor(-1, enable_motor1, 1);
-    cont--;
+    delay(10);
   }
-  delay(1000);
 }
 
 //------------------------------------------------------------------------------
 void setup() {
+  init_limit_switch();
   init_motores();
 }
 
 void loop() {
-  go_to_Home();
+  if (readSensor(LS_1) != 0) go_to_Home();
 }
