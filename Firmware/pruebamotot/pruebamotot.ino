@@ -6,7 +6,7 @@
 #define LS_2 6
 #define LS_3 7
 #define LS_4 10
-#define pasos_rev 200
+#define pasos_rev 20
 #define microPasos 16
 
 AccelStepper Xaxis(1, 8, 9); // pin 3 = step, pin 6 = direction
@@ -62,20 +62,32 @@ void move_motor(int distance, int motor_enable , int motor) {
 void go_to_Home() {
   while (readSensor(LS_2) == 0) { // this condition must be replaced by limit swich
     move_motor(1, enable_motor1, 1);
-    delay(10);
   }
   while (readSensor(LS_3) == 0) { // this condition must be replaced by limit swich
     move_motor(-1, enable_motor1, 1);
-    delay(10);
   }
 }
 
 //------------------------------------------------------------------------------
+
+void init_communication() {
+  Serial.begin(115200);
+}
+
+//------------------------------------------------------------------------------
 void setup() {
+  init_communication() ;
   init_limit_switch();
   init_motores();
 }
 
+int incomingByte = 0;
+
 void loop() {
-  if (readSensor(LS_1) != 0) go_to_Home();
+  if (Serial.available() > 0) {
+    incomingByte = Serial.read();
+    if (incomingByte  == 48)go_to_Home();
+    else if (incomingByte  == 49 )move_motor(5, enable_motor1, 1);
+    else if (incomingByte  == 50 )move_motor(-5, enable_motor1, 1);
+  }
 }
