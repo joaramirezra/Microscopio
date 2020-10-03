@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import PlotWidget
 from funciones import *
+from SerialArduino import *
 
 class Ui_Gestionador(object):
     def setupUi(self, Gestionador):
@@ -2014,6 +2015,7 @@ class Ui_Gestionador(object):
                 self.graphicsView.clear()
                 self.graphicsView_2.clear()
                 self.draw_size()
+                send_1()
             else :
                 print("No exists")
         else:
