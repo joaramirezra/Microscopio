@@ -95,9 +95,24 @@ void go_to_Home() {
 
 //------------------------------------------------------------------------------
 void actions_serial( String input_frame) {
-  if (input_frame.toInt() == 0)go_to_Home();
-  else if (input_frame.toInt() == 1)move_motor(Xaxis, speed_motors, 1, enable_motor1);
-  else if (input_frame.toInt() == 2 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+  int cont = 0;
+  String frame [5];
+  String str_aux;
+
+  for (int i = 0 ; i < input_frame.length(); i++) {
+    if (input_frame[i] != ',' && i < (input_frame.length()-1)) str_aux += input_frame[i];
+    else {
+      frame[cont++] = str_aux;
+      str_aux = "";
+     } 
+  }
+
+
+  if (frame[0].toInt() == 0)go_to_Home();
+  else if (frame[0].toInt() == 1)move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  else if (frame[0].toInt() == 2 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+  else if (frame[0].toInt() == 3 )Set_movement_parameters(frame[1].toInt(),frame[2].toInt());
+  
 }
 
 //------------------------------------------------------------------------------
@@ -116,13 +131,9 @@ void loop() {
     inputString = inputString.substring(0, inputString.length() - 1);
     actions_serial(inputString);
     // clear the string:;
-    Serial.println("hola");
-    Serial.println(inputString);
     inputString = "";
     stringComplete = false;
   }
-  Serial.println(stringComplete);
-  delay(1000);
 }
 
 //------------------------------------------------------------------------------
