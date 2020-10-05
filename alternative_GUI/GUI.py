@@ -9,7 +9,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import PlotWidget
 from funciones import *
-from SerialArduino import *
 
 class Ui_Gestionador(object):
     def setupUi(self, Gestionador):
@@ -1949,7 +1948,6 @@ class Ui_Gestionador(object):
         reset()
         init_size_dict()
         pass
-
 
 #-------------------------------------------------------------------------------
     def reference_pop(self):

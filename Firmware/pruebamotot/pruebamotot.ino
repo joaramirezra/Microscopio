@@ -23,8 +23,8 @@ AccelStepper Yaxis(1, 11, 12); // pin 11 = step, pin 12 = direction
 void init_motores(int enable , AccelStepper motor ) {
   // init motor one
   pinMode(enable, OUTPUT);
-  motor.setMaxSpeed(max_Speed);
-  motor.setSpeed((max_Speed / 10));
+  motor.setMaxSpeed(5000);
+  motor.setSpeed(800);
   motor.setCurrentPosition(0);
   digitalWrite(enable , HIGH); // turn motor off
 }
@@ -78,12 +78,12 @@ void Set_movement_parameters(int movement_speed, int millimeters) {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void move_motor(AccelStepper motor, int speed_mov , int mov_dir , int enable) {
   motor.setCurrentPosition(0);
+  motor.setMaxSpeed(5000);
   motor.setSpeed(mov_dir * speed_mov);
 
   digitalWrite(enable, LOW); // Turn on motor
   while (motor.currentPosition() != mov_dir * Steps_per_movement) motor.runSpeed();
   digitalWrite(enable, HIGH);// Turn off motor
-
 }
 
 //------------------------------------------------------------------------------
@@ -94,12 +94,10 @@ void go_to_Home() {
 }
 
 //------------------------------------------------------------------------------
-void actions_serial(String input_frame) {
-  Serial.println(input_frame);
-  move_motor(Xaxis, speed_motors, 1, enable_motor1);
-  if (input_frame  == "0")go_to_Home();
-  else if (input_frame == "1")move_motor(Xaxis, speed_motors, 1, enable_motor1);
-  else if (input_frame  == "2" )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+void actions_serial( String input_frame) {
+  if (input_frame.toInt() == 0)go_to_Home();
+  else if (input_frame.toInt() == 1)move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  else if (input_frame.toInt() == 2 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
 }
 
 //------------------------------------------------------------------------------
@@ -107,6 +105,7 @@ void setup() {
   init_enviroment_variables();
   init_communication() ;
   init_limit_switch();
+  delay(100);
   init_motores(enable_motor1, Xaxis);// init motor 1
   Set_movement_parameters(4, 4);
 }
@@ -114,8 +113,10 @@ void setup() {
 //------------------------------------------------------------------------------
 void loop() {
   if (stringComplete) {
-    actions_serial(inputString);
+    inputString = inputString.substring(0, inputString.length() - 1);
+    actions_serial( inputString);
     // clear the string:
+
     inputString = "";
     stringComplete = false;
   }
@@ -130,7 +131,7 @@ void serialEvent() {
     inputString += inChar;
     // if the incoming character is a newline, set a flag so the main loop can
     // do something about it:
-    if (inChar == '\n')stringComplete = true;
-    
+    if (inChar == '\n') stringComplete = true;
+    Serial.write(250);
   }
 }
