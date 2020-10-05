@@ -11,27 +11,22 @@
 #define max_Speed 10000
 
 int incomingByte;               // Reads Whats come from python
-int Steps_per_movement;            // define the number of mm movement each space
+int Steps_per_movement;         // define the number of mm movement each space
 int speed_motors;               // define the speed  of movement [0-100]
+String inputString ;            // a String to hold incoming data
+bool stringComplete ;           // whether the string is complete
 
 AccelStepper Xaxis(1, 8, 9); // pin 8 = step, pin 9 = direction
 AccelStepper Yaxis(1, 11, 12); // pin 11 = step, pin 12 = direction
 
 //------------------------------------------------------------------------------
-void init_motores() {
+void init_motores(int enable , AccelStepper motor ) {
   // init motor one
-  pinMode(enable_motor1, OUTPUT);
-  Xaxis.setMaxSpeed(5000);
-  Xaxis.setSpeed(800);
-  Xaxis.setCurrentPosition(0);
-  digitalWrite(enable_motor1, HIGH); // turn motor off
-
-  // init motor two
-  pinMode(enable_motor2, OUTPUT);
-  Yaxis.setMaxSpeed(5000);
-  Yaxis.setSpeed(800);
-  Yaxis.setCurrentPosition(0);
-  digitalWrite(enable_motor2, HIGH); // turn motor off
+  pinMode(enable, OUTPUT);
+  motor.setMaxSpeed(max_Speed);
+  motor.setSpeed((max_Speed / 10));
+  motor.setCurrentPosition(0);
+  digitalWrite(enable , HIGH); // turn motor off
 }
 
 //------------------------------------------------------------------------------
@@ -47,6 +42,9 @@ void init_enviroment_variables() {
   incomingByte = 0;
   Steps_per_movement = 0;
   speed_motors = 0;
+  inputString = "";
+  stringComplete = false;
+  inputString.reserve(200);        // reserve 200 bytes for the inputString:
 }
 
 //------------------------------------------------------------------------------
@@ -102,16 +100,40 @@ void setup() {
   init_enviroment_variables();
   init_communication() ;
   init_limit_switch();
-  init_motores();
-  Set_movement_parameters(4,4);
+  init_motores(enable_motor1, Xaxis);// init motor 1
+  Set_movement_parameters(4, 4);
 }
 
 void loop() {
-  if(Serial.available() > 0) {
-    incomingByte = Serial.read();
-    Serial.write(incomingByte);
-    if (incomingByte  == 48)go_to_Home();
-    else if (incomingByte  == 49 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
-    else if (incomingByte  == 50 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+  if (stringComplete) {
+    Serial.println(inputString);
+    // clear the string:
+    inputString = "";
+    stringComplete = false;
+  }
+
+
+
+
+  //  if (Serial.available() > 0) {
+  //    incomingByte = Serial.read();
+  //    Serial.write(incomingByte);
+  //    if (incomingByte  == 48)go_to_Home();
+  //    else if (incomingByte  == 49 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  //    else if (incomingByte  == 50 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+  //  }
+}
+
+void serialEvent() {
+  while (Serial.available()) {
+    // get the new byte:
+    char inChar = (char)Serial.read();
+    // add it to the inputString:
+    inputString += inChar;
+    // if the incoming character is a newline, set a flag so the main loop can
+    // do something about it:
+    if (inChar == '\n') {
+      stringComplete = true;
+    }
   }
 }
