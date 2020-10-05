@@ -2008,6 +2008,7 @@ class Ui_Gestionador(object):
 
         if( int(dimention_value) >= 0 and int(dimention_value) < 16):
             if(find_key(key) ):
+                send_1()
                 component,size = get_info(key,dimention_value)
                 add_size_mesuare(size)
                 write_file(component,size)
@@ -2015,9 +2016,10 @@ class Ui_Gestionador(object):
                 self.graphicsView.clear()
                 self.graphicsView_2.clear()
                 self.draw_size()
-                send_1()
+                
             else :
                 print("No exists")
+        
         else:
             print("size out range")
             

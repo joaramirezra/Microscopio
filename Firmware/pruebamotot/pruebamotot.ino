@@ -6,9 +6,9 @@
 #define LS_2 6
 #define LS_3 7
 #define LS_4 10
-#define steps_per_revolution 200
+#define steps_per_revolution 20
 #define microStetps 16
-#define max_Speed 5000
+#define max_Speed 10000
 
 int incomingByte;               // Reads Whats come from python
 int Steps_per_movement;            // define the number of mm movement each space
@@ -82,7 +82,6 @@ void move_motor(AccelStepper motor, int speed_mov , int mov_dir , int enable) {
   motor.setCurrentPosition(0);
   motor.setSpeed(mov_dir * speed_mov);
 
-
   digitalWrite(enable, LOW); // Turn on motor
   while (motor.currentPosition() != mov_dir * Steps_per_movement) motor.runSpeed();
   digitalWrite(enable, HIGH);// Turn off motor
@@ -104,12 +103,13 @@ void setup() {
   init_communication() ;
   init_limit_switch();
   init_motores();
-  Set_movement_parameters(1,5);
+  Set_movement_parameters(4,4);
 }
 
 void loop() {
-  if (Serial.available() > 0) {
+  if(Serial.available() > 0) {
     incomingByte = Serial.read();
+    Serial.write(incomingByte);
     if (incomingByte  == 48)go_to_Home();
     else if (incomingByte  == 49 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
     else if (incomingByte  == 50 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
