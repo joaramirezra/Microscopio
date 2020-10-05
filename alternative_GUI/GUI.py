@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import PlotWidget
 from funciones import *
+import sys
 
 class Ui_Gestionador(object):
     def setupUi(self, Gestionador):
@@ -2006,7 +2007,7 @@ class Ui_Gestionador(object):
 
         if( int(dimention_value) >= 0 and int(dimention_value) < 16):
             if(find_key(key) ):
-                send_1()
+                send_value("1")
                 component,size = get_info(key,dimention_value)
                 add_size_mesuare(size)
                 write_file(component,size)
@@ -2157,7 +2158,6 @@ class Ui_Gestionador(object):
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     Gestionador = QtWidgets.QMainWindow()
     ui = Ui_Gestionador()

@@ -1,4 +1,4 @@
-
+import serial
 
 elements_list = {}
 points_list = {}
@@ -139,7 +139,7 @@ def next_point():
 
 #-------------------------------------------------------------------------------        
 def home():
-	home_serial()
+	send_value("0")
 
 #-------------------------------------------------------------------------------        
 def reset():
@@ -150,8 +150,8 @@ def reset():
 
 #-------------------------------------------------------------------------------        
 def erase():
-	send_2()
-	print('reset')
+	send_value("2")
+	print('reset 2')
 
 
 #-------------------------------------------------------------------------------        
@@ -174,52 +174,12 @@ def leer_ultimo():
 
 
 def send_1():
-	import serial
-	import time
-	ser = serial.Serial(port='/dev/ttyUSB0',baudrate=115200,timeout=1)
-	time.sleep(1)
-
-	print(ser.name) 
-	ser.write(b'1')
-
+	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
+	ser.write(b'1\n')
 	ser.close()
 
-def send_2():
-	import serial
-	import time
-	
-	ser = serial.Serial(
-        port='/dev/ttyUSB0',\
-        baudrate=115200,\
-        parity=serial.PARITY_NONE,\
-        stopbits=serial.STOPBITS_ONE,\
-        bytesize=serial.EIGHTBITS,\
-            timeout=10)
-
-	print("connected to: " + ser.portstr)
-	
-	ser.write(b'2')
-	
-	serialString = ser.readline()
-	# Print the contents of the serial data
-	print(serialString.decode('Ascii'))
-
-	ser.close()
-
-
-
-def home_serial():
-	import serial
-	import time
-	
-	ser = serial.Serial(
-		port='/dev/ttyUSB0',\
-		baudrate=115200,\
-		parity=serial.PARITY_NONE,\
-		stopbits=serial.STOPBITS_ONE,\
-		bytesize=serial.EIGHTBITS,\
-			timeout=0)
-
-	print("connected to: " + ser.portstr)
-	ser.write(b'0')
+def send_value(value):
+	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
+	string = "".join([value,'\n'])
+	ser.write(string.encode())
 	ser.close()
