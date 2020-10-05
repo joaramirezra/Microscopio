@@ -1,12 +1,16 @@
 import serial
 import time
 
-ser = serial.Serial(port='/dev/ttyUSB0',baudrate=115200,timeout=1)
-time.sleep(1)
+ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=0.5)
+
+ser.close()
+ser.open()
 
 print(ser.name) 
-while True:
-    ser.write(b'1')
-    time.sleep(2)
+
+while True :
+    ser.write(b'1\n')
+    time.sleep(1)
 ser.close()
+
 

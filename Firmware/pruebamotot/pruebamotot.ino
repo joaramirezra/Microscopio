@@ -49,7 +49,7 @@ void init_enviroment_variables() {
 
 //------------------------------------------------------------------------------
 void init_communication() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -114,12 +114,15 @@ void setup() {
 void loop() {
   if (stringComplete) {
     inputString = inputString.substring(0, inputString.length() - 1);
-    actions_serial( inputString);
-    // clear the string:
-
+    actions_serial(inputString);
+    // clear the string:;
+    Serial.println("hola");
+    Serial.println(inputString);
     inputString = "";
     stringComplete = false;
   }
+  Serial.println(stringComplete);
+  delay(1000);
 }
 
 //------------------------------------------------------------------------------
@@ -132,6 +135,5 @@ void serialEvent() {
     // if the incoming character is a newline, set a flag so the main loop can
     // do something about it:
     if (inChar == '\n') stringComplete = true;
-    Serial.write(250);
   }
 }

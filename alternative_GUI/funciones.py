@@ -1,4 +1,4 @@
-
+import serial
 
 elements_list = {}
 points_list = {}
@@ -174,14 +174,8 @@ def leer_ultimo():
 
 
 def send_1():
-	import serial
-	import time
-	ser = serial.Serial(port='/dev/ttyUSB0',baudrate=115200,timeout=1)
-	time.sleep(1)
-
-	print(ser.name) 
-	ser.write(b'1')
-
+	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
+	ser.write(b'1\n')
 	ser.close()
 
 def send_2():
@@ -189,7 +183,7 @@ def send_2():
 	import time
 	
 	ser = serial.Serial(
-        port='/dev/ttyUSB0',\
+        port='/dev/ttyUSB1',\
         baudrate=115200,\
         parity=serial.PARITY_NONE,\
         stopbits=serial.STOPBITS_ONE,\
@@ -198,7 +192,7 @@ def send_2():
 
 	print("connected to: " + ser.portstr)
 	
-	ser.write(b'2')
+	ser.write(b'2\n')
 	
 	serialString = ser.readline()
 	# Print the contents of the serial data
@@ -213,7 +207,7 @@ def home_serial():
 	import time
 	
 	ser = serial.Serial(
-		port='/dev/ttyUSB0',\
+		port='/dev/ttyUSB1',\
 		baudrate=115200,\
 		parity=serial.PARITY_NONE,\
 		stopbits=serial.STOPBITS_ONE,\
@@ -221,5 +215,5 @@ def home_serial():
 			timeout=0)
 
 	print("connected to: " + ser.portstr)
-	ser.write(b'0')
+	ser.write(b'0\n')
 	ser.close()
