@@ -93,9 +93,16 @@ void go_to_Home() {
   while (readSensor(LS_3) == 0) move_motor(Xaxis, speed_motors_homing, -1, enable_motor1);
 }
 
+//------------------------------------------------------------------------------
+void actions_serial(String input_frame) {
+  Serial.println(input_frame);
+  move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  if (input_frame  == "0")go_to_Home();
+  else if (input_frame == "1")move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  else if (input_frame  == "2" )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+}
 
 //------------------------------------------------------------------------------
-
 void setup() {
   init_enviroment_variables();
   init_communication() ;
@@ -104,26 +111,17 @@ void setup() {
   Set_movement_parameters(4, 4);
 }
 
+//------------------------------------------------------------------------------
 void loop() {
   if (stringComplete) {
-    Serial.println(inputString);
+    actions_serial(inputString);
     // clear the string:
     inputString = "";
     stringComplete = false;
   }
-
-
-
-
-  //  if (Serial.available() > 0) {
-  //    incomingByte = Serial.read();
-  //    Serial.write(incomingByte);
-  //    if (incomingByte  == 48)go_to_Home();
-  //    else if (incomingByte  == 49 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
-  //    else if (incomingByte  == 50 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
-  //  }
 }
 
+//------------------------------------------------------------------------------
 void serialEvent() {
   while (Serial.available()) {
     // get the new byte:
@@ -132,8 +130,7 @@ void serialEvent() {
     inputString += inChar;
     // if the incoming character is a newline, set a flag so the main loop can
     // do something about it:
-    if (inChar == '\n') {
-      stringComplete = true;
-    }
+    if (inChar == '\n')stringComplete = true;
+    
   }
 }
