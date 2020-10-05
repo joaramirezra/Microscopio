@@ -1,4 +1,4 @@
-from SerialArduino import *
+
 
 elements_list = {}
 points_list = {}
@@ -171,3 +171,55 @@ def clean_file():
 
 def leer_ultimo():
 	pass
+
+
+def send_1():
+	import serial
+	import time
+	ser = serial.Serial(port='/dev/ttyUSB0',baudrate=115200,timeout=1)
+	time.sleep(1)
+
+	print(ser.name) 
+	ser.write(b'1')
+
+	ser.close()
+
+def send_2():
+	import serial
+	import time
+	
+	ser = serial.Serial(
+        port='/dev/ttyUSB0',\
+        baudrate=115200,\
+        parity=serial.PARITY_NONE,\
+        stopbits=serial.STOPBITS_ONE,\
+        bytesize=serial.EIGHTBITS,\
+            timeout=10)
+
+	print("connected to: " + ser.portstr)
+	
+	ser.write(b'2')
+	
+	serialString = ser.readline()
+	# Print the contents of the serial data
+	print(serialString.decode('Ascii'))
+
+	ser.close()
+
+
+
+def home_serial():
+	import serial
+	import time
+	
+	ser = serial.Serial(
+		port='/dev/ttyUSB0',\
+		baudrate=115200,\
+		parity=serial.PARITY_NONE,\
+		stopbits=serial.STOPBITS_ONE,\
+		bytesize=serial.EIGHTBITS,\
+			timeout=0)
+
+	print("connected to: " + ser.portstr)
+	ser.write(b'0')
+	ser.close()
