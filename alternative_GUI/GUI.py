@@ -2010,7 +2010,7 @@ class Ui_Gestionador(object):
                 send_value("1")
                 component,size = get_info(key,dimention_value)
                 add_size_mesuare(size)
-                write_file(component,size)
+                # write_file(component,size)
                 self.update_table(component,size)
                 self.graphicsView.clear()
                 self.graphicsView_2.clear()

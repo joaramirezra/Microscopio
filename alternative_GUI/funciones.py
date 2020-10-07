@@ -1,5 +1,5 @@
 import serial
-
+import time
 elements_list = {}
 points_list = {}
 
@@ -110,7 +110,8 @@ def new_element_validation(element_string):
 
 #-------------------------------------------------------------------------------        
 def move_setup(speed,step):
-    print(speed,step)
+	value_sent = ",".join(["5",str(speed),str(step)])
+	send_value(value_sent)
 
 #-------------------------------------------------------------------------------        
 def turn_on():
@@ -150,10 +151,8 @@ def reset():
 
 #-------------------------------------------------------------------------------        
 def erase():
-	send_value("2")
-txtoin([";".join([component,size]),"\n"])
-	file.write(Line_to_write) 
-	file.close() 
+	send_value("3")
+
 
 def clean_file():
 	file = open("compuestos.csv","w") 
@@ -164,6 +163,7 @@ def leer_ultimo():
 
 def send_value(value):
 	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
-	string = "".join([value,'\n'])
+	string = "".join([value,' \n'])
 	ser.write(string.encode())
 	ser.close()
+
