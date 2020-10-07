@@ -1,11 +1,11 @@
 #include <AccelStepper.h>
 
-#define enable_motor1 3
-#define enable_motor2 5
-#define LS_1 4
-#define LS_2 6
-#define LS_3 7
-#define LS_4 10
+#define enable_motor1 6
+#define enable_motor2 9
+#define LS_1 12
+#define LS_2 12
+#define LS_3 12
+#define LS_4 12
 #define steps_per_revolution 20
 #define microStetps 16
 #define max_Speed 10000
@@ -16,8 +16,8 @@ int speed_motors;               // define the speed  of movement [0-100]
 String inputString ;            // a String to hold incoming data
 bool stringComplete ;           // whether the string is complete
 
-AccelStepper Xaxis(1, 8, 9); // pin 8 = step, pin 9 = direction
-AccelStepper Yaxis(1, 11, 12); // pin 11 = step, pin 12 = direction
+AccelStepper Xaxis(1, 5, 4); // pin 8 = step, pin 9 = direction
+AccelStepper Yaxis(1, 8, 7); // pin 11 = step, pin 12 = direction
 
 //------------------------------------------------------------------------------
 void init_motores(int enable , AccelStepper motor ) {
@@ -108,11 +108,11 @@ void actions_serial( String input_frame) {
     }
   }
 
-  if (frame[0].toInt() == 0)go_to_Home();
+  if (frame[0].toInt() == 0)delay(1);//go_to_Home();
   else if (frame[0].toInt() == 1 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
   else if (frame[0].toInt() == 2 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
-  else if (frame[0].toInt() == 3 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
-  else if (frame[0].toInt() == 4 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+  else if (frame[0].toInt() == 3 )move_motor(Yaxis, speed_motors, 1, enable_motor2);
+  else if (frame[0].toInt() == 4 )move_motor(Yaxis, speed_motors, -1, enable_motor2);
   else if (frame[0].toInt() == 5 )Set_movement_parameters(frame[1].toInt(), frame[2].toInt());
 }
 

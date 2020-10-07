@@ -151,17 +151,7 @@ def reset():
 #-------------------------------------------------------------------------------        
 def erase():
 	send_value("2")
-	print('reset 2')
-
-
-#-------------------------------------------------------------------------------        
-def add_to_list(value):
-    print(value)
-
-#-------------------------------------------------------------------------------        
-def write_file(component,size):
-	file = open("compuestos.txt","a") 
-	Line_to_write = "".join([";".join([component,size]),"\n"])
+txtoin([";".join([component,size]),"\n"])
 	file.write(Line_to_write) 
 	file.close() 
 
@@ -171,12 +161,6 @@ def clean_file():
 
 def leer_ultimo():
 	pass
-
-
-def send_1():
-	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
-	ser.write(b'1\n')
-	ser.close()
 
 def send_value(value):
 	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
