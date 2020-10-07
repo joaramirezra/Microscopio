@@ -107,7 +107,6 @@ void actions_serial( String input_frame) {
      } 
   }
 
-
   if (frame[0].toInt() == 0)go_to_Home();
   else if (frame[0].toInt() == 1)move_motor(Xaxis, speed_motors, 1, enable_motor1);
   else if (frame[0].toInt() == 2 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
