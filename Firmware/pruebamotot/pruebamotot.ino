@@ -99,19 +99,21 @@ void actions_serial( String input_frame) {
   String frame [5];
   String str_aux;
 
+  // This section helps to split the string using comas as a separator
   for (int i = 0 ; i < input_frame.length(); i++) {
-    if (input_frame[i] != ',' && i < (input_frame.length()-1)) str_aux += input_frame[i];
+    if (input_frame[i] != ',' && i < (input_frame.length() - 1)) str_aux += input_frame[i];
     else {
       frame[cont++] = str_aux;
       str_aux = "";
-     } 
+    }
   }
 
   if (frame[0].toInt() == 0)go_to_Home();
-  else if (frame[0].toInt() == 1)move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  else if (frame[0].toInt() == 1 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
   else if (frame[0].toInt() == 2 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
-  else if (frame[0].toInt() == 3 )Set_movement_parameters(frame[1].toInt(),frame[2].toInt());
-  
+  else if (frame[0].toInt() == 3 )move_motor(Xaxis, speed_motors, 1, enable_motor1);
+  else if (frame[0].toInt() == 4 )move_motor(Xaxis, speed_motors, -1, enable_motor1);
+  else if (frame[0].toInt() == 5 )Set_movement_parameters(frame[1].toInt(), frame[2].toInt());
 }
 
 //------------------------------------------------------------------------------
@@ -121,6 +123,7 @@ void setup() {
   init_limit_switch();
   delay(100);
   init_motores(enable_motor1, Xaxis);// init motor 1
+  init_motores(enable_motor2, Yaxis);// init motor 1
   Set_movement_parameters(4, 4);
 }
 
