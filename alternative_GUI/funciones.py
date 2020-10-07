@@ -81,12 +81,10 @@ def find_key(keys_combination):
 	else :
 		return False
 #-------------------------------------------------------------------------------        
-
 def add_size_mesuare(size):
 	if(size in dim_reference):
 		dim_reference[size]+=1
 	return True
-
 
 #-------------------------------------------------------------------------------        
 def get_component(keys_combination):
