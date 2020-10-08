@@ -1945,7 +1945,6 @@ class Ui_Gestionador(object):
         self.graphicsView.clear()
         self.graphicsView_2.clear()
         self.erase_table()
-        
         reset()
         init_size_dict()
         pass

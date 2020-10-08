@@ -151,14 +151,12 @@ def reset():
 def erase():
 	send_value("3")
 
-
+#-------------------------------------------------------------------------------        
 def clean_file():
 	file = open("compuestos.csv","w") 
 	file.close() 
 
-def leer_ultimo():
-	pass
-
+#-------------------------------------------------------------------------------        
 def send_value(value):
 	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
 	string = "".join([value,' \n'])
