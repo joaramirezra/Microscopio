@@ -1,4 +1,4 @@
-#include <AccelStepper.h>
+  #include <AccelStepper.h>
 
 #define enable_motor1 6
 #define enable_motor2 9
@@ -132,6 +132,7 @@ void loop() {
   if (stringComplete) {
     inputString = inputString.substring(0, inputString.length() - 1);
     actions_serial(inputString);
+//    Serial.println("hola");
     // clear the string:;
     inputString = "";
     stringComplete = false;
