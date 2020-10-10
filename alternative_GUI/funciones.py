@@ -156,10 +156,40 @@ def clean_file():
 	file = open("compuestos.csv","w") 
 	file.close() 
 
+def open_files():
+	file = open("compuestos.csv","a") 
+	file.close() 
+
+
 #-------------------------------------------------------------------------------        
 def send_value(value):
-	ser = serial.Serial(port='/dev/ttyUSB1',baudrate=9600,timeout=1)
-	string = "".join([value,' \n'])
+	ser = serial.Serial(port='/dev/ttyUSB0',baudrate=9600,timeout=1)
+	time.sleep(5)
+	string = "".join([str(value),' \n'])
 	ser.write(string.encode())
 	ser.close()
 
+#-------------------------------------------------------------------------------
+def move_right():
+	send_value("1")
+
+#-------------------------------------------------------------------------------	
+def move_left():
+	send_value("2")
+
+#-------------------------------------------------------------------------------
+def move_up():
+	send_value("3")
+
+#-------------------------------------------------------------------------------
+def move_down():
+	send_value("4")
+
+#-------------------------------------------------------------------------------
+def cal_next_point(coor_x,coor_y):
+	if (coor_x < 40 and coor_y%2 == 0):
+		move_right()
+	elif (coor_x < 40 and coor_y%2 == 1):
+		move_left()
+	elif (coor_x == 40):
+		move_up()
