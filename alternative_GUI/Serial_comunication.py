@@ -6,7 +6,6 @@ def create_port(port):
     port = str('/dev/')+port
     try:
         ser = serial.Serial(port=port,baudrate=9600,timeout=1)
-        time.sleep(2)
         return ser
     except:
         print('Open port failded')
@@ -32,4 +31,3 @@ def close_port(ser):
 def send_value(value,ser):
 	string = "".join([str(value),' \n'])
 	ser.write(string.encode())
-
