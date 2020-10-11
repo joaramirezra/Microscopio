@@ -9,7 +9,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import PlotWidget
 from funciones import *
+from Logic import next_point
+from file_flow import number_components,create_title
 import sys
+
 
 class Ui_Gestionador(object):
     def setupUi(self, Gestionador):
@@ -1938,6 +1941,7 @@ class Ui_Gestionador(object):
         # call when enter is presed
         self.elemnt_input.returnPressed.connect(self.save_point) 
         self.new_compnent_input.returnPressed.connect(self.add_element)
+        self.replace_element_button.clicked.connect(self.replace)
         
 #-------------------------Functions---------------------------------------------
 #-------------------------------------------------------------------------------
@@ -1945,6 +1949,7 @@ class Ui_Gestionador(object):
         self.graphicsView.clear()
         self.graphicsView_2.clear()
         self.erase_table()
+        create_title()
         reset()
         init_size_dict()
         pass
@@ -1973,7 +1978,7 @@ class Ui_Gestionador(object):
                     self.Key_input.clear()
                     self.new_compnent_input.clear()
                 else: 
-                    print('error existing element or key')
+                    print('error existing key')
         else:
             print ('error key with number or too long')
 
@@ -1997,8 +2002,24 @@ class Ui_Gestionador(object):
             size = self.last_componet_table.item(x, 1)
             element_change.setText("")
             size.setText("")
-            clean_file()
-        
+
+#-------------------------------------------------------------------------------        
+    def replace(self):
+        keys_string = self.Key_input.text()
+        component_string = self.new_compnent_input.text()
+
+        if(len(keys_string) < 4  and keys_string.isalpha() ):
+            if( len(component_string) == 0 ) : 
+                print('error no element ')
+            else : 
+                if(replace_component(keys_string,component_string) ):
+                    self.Key_input.clear()
+                    self.new_compnent_input.clear()
+                else: 
+                    print('error existing key')
+        else:
+            print ('error key with number or too long')
+
 #-------------------------------------------------------------------------------        
     def save_point(self):
         element_input = self.elemnt_input.text() 
@@ -2006,10 +2027,10 @@ class Ui_Gestionador(object):
 
         if( int(dimention_value) >= 0 and int(dimention_value) < 16):
             if(find_key(key) ):
-                send_value("1")
                 component,size = get_info(key,dimention_value)
+                next_point(1,1,component,size)
                 add_size_mesuare(size)
-                # write_file(component,size)
+                self.lcd_counter.display(number_components()-1)
                 self.update_table(component,size)
                 self.graphicsView.clear()
                 self.graphicsView_2.clear()
@@ -2064,7 +2085,7 @@ class Ui_Gestionador(object):
         self.new_Inout_label.setText(_translate("Gestionador", "Compuesto y tamaño"))
         self.Step_label.setText(_translate("Gestionador", "Avance"))
         self.Speed_label.setText(_translate("Gestionador", "Velocidad"))
-        self.begin_button.setText(_translate("Gestionador", "Iniciar"))
+        self.begin_button.setText(_translate("Gestionador", "Configurar"))
         self.home_button.setText(_translate("Gestionador", "Home"))
         self.key_label.setText(_translate("Gestionador", "Letra(s)"))
         self.Save_element_button.setText(_translate("Gestionador", "Agregar"))

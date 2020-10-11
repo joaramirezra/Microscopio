@@ -1,5 +1,8 @@
+from Serial_comunication import send_value
+from Logic import init_port
 import serial
 import time
+
 elements_list = {}
 points_list = {}
 
@@ -46,8 +49,19 @@ def count_sizes():
 
 #-------------------------------------------------------------------------------        
 def add_component(keys_combination, component):
-	elements_list[keys_combination] = { 'component': component,
+	if(keys_combination in elements_list):
+		return False
+	else:
+		elements_list[keys_combination] = { 'component': component,
 										'count':0}
+		return True
+
+
+#-------------------------------------------------------------------------------        
+def replace_component(keys_combination, component):
+	elements_list[keys_combination] = { 'component': component,
+									'count':0}
+	
 	return True
 
 #-------------------------------------------------------------------------------        
@@ -108,8 +122,9 @@ def new_element_validation(element_string):
 
 #-------------------------------------------------------------------------------        
 def move_setup(speed,step):
+	port = init_port()
 	value_sent = ",".join(["5",str(speed),str(step)])
-	print('send_value(value_sent)')
+	send_value(value_sent,port)
 
 #-------------------------------------------------------------------------------        
 def turn_on():
@@ -138,7 +153,8 @@ def next_point():
 
 #-------------------------------------------------------------------------------        
 def home():
-	print('send_value("0")')
+	# port = init_port()
+	print('send_value("0",port)')
 
 #-------------------------------------------------------------------------------        
 def reset():
