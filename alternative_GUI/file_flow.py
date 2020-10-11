@@ -15,7 +15,11 @@ def create_title():
 
 #-------------------------------------------------------------------------------
 def is_empty():
-	file = open("compuestos.csv","r") 
+	try:
+		file = open("compuestos.csv","r") 
+	except:
+		create_title()
+		file = open("compuestos.csv","r")
 	lines = file.readlines()
 	return bool((len(lines)) <=1 )
 

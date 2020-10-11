@@ -8,7 +8,6 @@ def init_port():
     return port
 
 #-------------------------------------------------------------------------------
-
 def next_point(coor_x,coor_y,element,size):
     port = init_port()
 
