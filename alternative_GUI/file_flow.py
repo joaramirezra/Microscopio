@@ -46,10 +46,10 @@ def Read_last_line():
 		return False
 	else :
 		last = lines[len(lines)-1].split(";")
-	
-	if(len(last) == 6):
+
+	if(len(last) == 5):
 		if(last[0].isnumeric() and last[1].isnumeric() and last[2].isnumeric()):
-			print(last)
+			return last
 		else: 
 			print("format error")
 			return False
