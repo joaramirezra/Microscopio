@@ -1,3 +1,3 @@
 #point calculations
 
-s
+print('hello py')
