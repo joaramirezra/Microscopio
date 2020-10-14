@@ -8,6 +8,7 @@ this project aims to discribe the components of a element counter system for a m
 
 ## Software 
 
+
 - kicad 5
 - arduino 18.04
 - python 3.6
