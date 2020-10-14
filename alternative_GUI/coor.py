@@ -1,11 +1,9 @@
-#point calculations
+from file_flow import * 
+from Serial_comunication import send_value,create_port
 
-# if file is empty is necesary send to home
-# if is not, read the last line and calculate the coordinates
-# or save in a file the position 
-
-from file_flow import *   
-
+def init_port():
+    port = create_port('ttyUSB0')
+    return port
 #-------------------------------------------------------------------------------
 def read_param():
     cont,step,x,y  = 0,0,0,0
@@ -21,31 +19,34 @@ def read_param():
 
 #-------------------------------------------------------------------------------
 def cal_movement(direction): # 1:forward, -1:backward 
-    x_limit,y_limit = 5,10
-    _,step,x,y = read_param()
+    x_limit,y_limit = 44,24
+    cont,step,x,y = read_param()
 
     dir = (1 if (y%2==0) else -1)*direction
-    
-    print(x,dir,step,(x+dir*step) in range(x_limit))
+
     if((x+dir*step) in range(x_limit)):
-        return (1 if (dir > 0) else 2)
+        mov = (1 if (dir > 0) else 2)
     elif ((y+dir*step) in range(y_limit)):
-        return (3 if (dir > 0) else 4)
+        mov = (3 if (dir > 0) else 4)
     else :
-        return -1
+        mov = -1
+    return mov,cont,step,x,y
 
 #-------------------------------------------------------------------------------
-def save_new_point(dir):
-    cont,step,x,y = read_param()
+def save_new_point(dir,port):
+    mov,cont,step,x,y = cal_movement(int(dir))
     cont = number_components()
-    mov = cal_movement(int(dir))
-    print(mov)
+   
+    send_value(str(mov),port)
     if( mov == 1 or mov == 2):
-        add_point_to_file(cont,step,x+step,y,1,1)   
+        difx = (1 if (y%2==0) else -1)*dir*step
+        add_point_to_file(cont,step,x+difx,y,1,1)
     elif(mov == 3 or mov == 4):
-        add_point_to_file(cont,step,x,y+step,1,1)   
+        dify = dir*step
+        add_point_to_file(cont,step,x,y+dify,1,1)   
     else :
         pass
 
-while True: 
-    save_new_point(int(input("dir : ")))
+port = init_port()
+while True:
+    save_new_point(int(input("dir : ")),port)
