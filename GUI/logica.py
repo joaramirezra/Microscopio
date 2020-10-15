@@ -1,5 +1,8 @@
 import os
-os.system('rm elementos.csv')
+import sys
+import numpy as np
+
+#os.system('rm elementos.csv')
 file1 = open("elementos.csv","a") 
 
 def leer_Valor():

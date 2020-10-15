@@ -49,6 +49,6 @@ def save_new_point(dir,port,component, size):
     else :
         return False
 
-port = init_port()
-while True:
-    save_new_point(int(input("dir : ")),port,"anal","sita")
+# port = init_port()
+# while True:
+#     save_new_point(int(input("dir : ")),port,"anal","sita")

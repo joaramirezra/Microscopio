@@ -15,11 +15,11 @@ def next_point(coor_x,coor_y,element,size):
         clean_file()
         create_title()
         cont = 1
-        add_point_to_file(cont, coor_x , coor_y, element, size)
+        add_point_to_file(cont,1, coor_x , coor_y, element, size)
 
     else:
         cont = number_components()
-        add_point_to_file(cont, coor_x , coor_y, element, size)
+        add_point_to_file(cont,1, coor_x , coor_y, element, size)
         cal_next_point(coor_x,coor_y,port)
 
 
