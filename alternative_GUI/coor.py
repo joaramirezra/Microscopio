@@ -26,27 +26,27 @@ def cal_movement(direction): # 1:forward, -1:backward
 
     if((x+dir*step) in range(x_limit)):
         mov = (1 if (dir > 0) else 2)
-    elif ((y+dir*step) in range(y_limit)):
-        mov = (3 if (dir > 0) else 4)
+    elif ((y+direction*step) in range(y_limit)):
+        mov = (3 if (direction > 0) else 4)
     else :
         mov = -1
     return mov,cont,step,x,y
 
 #-------------------------------------------------------------------------------
-def save_new_point(dir,port):
+def save_new_point(dir,port,component, size):
     mov,cont,step,x,y = cal_movement(int(dir))
     cont = number_components()
    
     send_value(str(mov),port)
     if( mov == 1 or mov == 2):
         difx = (1 if (y%2==0) else -1)*dir*step
-        add_point_to_file(cont,step,x+difx,y,1,1)
+        add_point_to_file(cont,step,x+difx,y,component, size)
     elif(mov == 3 or mov == 4):
         dify = dir*step
-        add_point_to_file(cont,step,x,y+dify,1,1)   
+        add_point_to_file(cont,step,x,y+dify,component, size)   
     else :
         pass
 
 port = init_port()
 while True:
-    save_new_point(int(input("dir : ")),port)
+    save_new_point(int(input("dir : ")),port,"anal","sita")
