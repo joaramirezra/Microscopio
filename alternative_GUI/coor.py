@@ -41,11 +41,13 @@ def save_new_point(dir,port,component, size):
     if( mov == 1 or mov == 2):
         difx = (1 if (y%2==0) else -1)*dir*step
         add_point_to_file(cont,step,x+difx,y,component, size)
+        return True
     elif(mov == 3 or mov == 4):
         dify = dir*step
         add_point_to_file(cont,step,x,y+dify,component, size)   
+        return True
     else :
-        pass
+        return False
 
 port = init_port()
 while True:

@@ -12,7 +12,7 @@ from funciones import *
 from Logic import next_point
 from file_flow import number_components,create_title
 import sys
-
+from coor import save_new_point,init_port
 
 class Ui_Gestionador(object):
     def setupUi(self, Gestionador):
@@ -2028,8 +2028,11 @@ class Ui_Gestionador(object):
         if( int(dimention_value) >= 0 and int(dimention_value) < 16):
             if(find_key(key) ):
                 component,size = get_info(key,dimention_value)
-                next_point(1,1,component,size)
                 add_size_mesuare(size)
+
+                port = init_port()
+                save_new_point(1,port,component,size)
+                
                 self.lcd_counter.display(number_components()-1)
                 self.update_table(component,size)
                 self.graphicsView.clear()
@@ -2044,6 +2047,7 @@ class Ui_Gestionador(object):
             
         self.elemnt_input.clear()
 
+    
 #-------------------------------------------------------------------------------
     def draw_size(self):
         components_name ,components_count = count_element() 

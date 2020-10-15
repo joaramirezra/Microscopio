@@ -31,3 +31,21 @@ def close_port(ser):
 def send_value(value,ser):
 	string = "".join([str(value),' \n'])
 	ser.write(string.encode())
+
+
+import time
+def prueba_cuadrado():
+    port = create_port('ttyUSB0')
+    send_value("5,10,60",port)
+    time_1 = 4
+    while True:
+        send_value("1",port)
+        time.sleep(time_1)
+        send_value("4",port)
+        time.sleep(time_1)
+        send_value("2",port)
+        time.sleep(time_1)
+        send_value("3",port)
+        time.sleep(time_1)
+
+prueba_cuadrado()

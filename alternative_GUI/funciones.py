@@ -1,5 +1,5 @@
 from Serial_comunication import send_value
-from Logic import init_port
+from coor import init_port,save_new_point
 import serial
 import time
 
@@ -165,4 +165,6 @@ def reset():
 
 #-------------------------------------------------------------------------------        
 def erase():
+	port = init_port()
+	save_new_point(-1,port,"null","null")
 	print('erase')
