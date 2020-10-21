@@ -1,3 +1,5 @@
+# this file contains the methods need it to create the logic of the program is
+
 from file_flow import * 
 from Serial_comunication import send_value,create_port
 
@@ -38,6 +40,7 @@ def save_new_point(dir,port,component, size):
     cont = number_components()
    
     send_value(str(mov),port)
+    
     if( mov == 1 or mov == 2):
         difx = (1 if (y%2==0) else -1)*dir*step
         add_point_to_file(cont,step,x+difx,y,component, size)
@@ -49,6 +52,3 @@ def save_new_point(dir,port,component, size):
     else :
         return False
 
-# port = init_port()
-# while True:
-#     save_new_point(int(input("dir : ")),port,"anal","sita")
