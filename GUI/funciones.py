@@ -56,7 +56,6 @@ def add_component(keys_combination, component):
 										'count':0}
 		return True
 
-
 #-------------------------------------------------------------------------------        
 def replace_component(keys_combination, component):
 	elements_list[keys_combination] = { 'component': component,

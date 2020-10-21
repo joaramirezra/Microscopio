@@ -56,3 +56,41 @@ def Read_last_line():
 	else:
 		print("size error")
 		return False
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        
+#---------------------movement parameters file flow-----------------------------
+def create_movement_parameters_file():
+	file = open("hardware_parameters.csv","w") 
+	str_to_append = ";".join(["speed","Step" ,"port_name" , "conection_status"])
+	file.write((str_to_append+' \n'))
+	str_to_append = ";".join(["0","0" ,"ttyUSB0" , "False"])
+	file.write((str_to_append+' \n'))
+	file.close() 
+
+#-------------------------------------------------------------------------------        
+def change_movement_parameters_file(speed,step,port,status):
+	file = open("hardware_parameters.csv","w") 
+	str_to_append = ";".join(["speed","Step" ,"port_name" , "conection_status"])
+	file.write((str_to_append+' \n'))
+	str_to_append = ";".join([str(speed),str(step),str(port),str(status)])
+	file.write((str_to_append+' \n'))
+	file.close() 
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        
+#--------------------------components file flow---------------------------------
+
+def create_component_key_list():
+	file = open("component-key-list.csv","w") 
+	str_to_append = ";".join(["component","key"])
+	file.write((str_to_append+' \n'))
+	file.close() 
+
+#-------------------------------------------------------------------------------        
+def add_component_to_list(Component,key):
+	file = open("component-key-list.csv","a") 
+	str_to_append = ";".join([str(Component),str(key)])
+	file.write((str_to_append+' \n'))
+	file.close() 
+
+
+add_component_to_list('hola','key')

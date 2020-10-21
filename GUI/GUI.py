@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from pyqtgraph import PlotWidget
+
 from funciones import *
 from Logic import next_point
 from file_flow import number_components,create_title
