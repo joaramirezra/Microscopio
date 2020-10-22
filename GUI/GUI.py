@@ -1941,10 +1941,10 @@ class Ui_Gestionador(object):
         self.erase_last_button.clicked.connect(erase) 
         self.restart_counting_button.clicked.connect(self.reset_counting)
         self.Size_reference_button.clicked.connect(self.reference_pop)      
+        self.replace_element_button.clicked.connect(self.replace)
         # call when enter is presed
         self.elemnt_input.returnPressed.connect(self.save_point) 
         self.new_compnent_input.returnPressed.connect(self.add_element)
-        self.replace_element_button.clicked.connect(self.replace)
         
 #-------------------------Functions---------------------------------------------
 #-------------------------------------------------------------------------------
@@ -1961,7 +1961,8 @@ class Ui_Gestionador(object):
     def reference_pop(self):
         option=QFileDialog.Options()
         option|=QFileDialog.DontUseNativeDialog
-        file=QFileDialog.getSaveFileName(widget,"Save File Window Title","compuestos.csv","All Files (*)",options=option)
+        file=QFileDialog.getSaveFileName(widget,"Save File Window Title",
+                                "compuestos.csv","All Files (*)",options=option)
         print(file[0])
         
 #-------------------------------------------------------------------------------       

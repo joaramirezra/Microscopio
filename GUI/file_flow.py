@@ -92,5 +92,3 @@ def add_component_to_list(Component,key):
 	file.write((str_to_append+' \n'))
 	file.close() 
 
-
-add_component_to_list('hola','key')
