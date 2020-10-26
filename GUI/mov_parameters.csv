@@ -1,0 +1,4 @@
+connection_status:False
+port_name:ttyUSB0
+step:20
+speed:10
