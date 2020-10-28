@@ -17,6 +17,10 @@ from file_flow import number_components,create_title
 import sys
 from coor import save_new_point,init_port
 
+from Files_management import add_pair_key_component,replace_pair_key_component
+from Files_management import there_is_component,get_info,add_size,add_components_count
+
+
 class Ui_Gestionador(object):
     def setupUi(self, Gestionador):
         Gestionador.setObjectName("Gestionador")
@@ -1981,7 +1985,7 @@ class Ui_Gestionador(object):
             if( len(component_string) == 0 ) : 
                 print('error no element ')
             else : 
-                if(add_component(keys_string,component_string) ):
+                if(add_pair_key_component(keys_string,component_string) ):
                     self.Key_input.clear()
                     self.new_compnent_input.clear()
                 else: 
@@ -2019,7 +2023,7 @@ class Ui_Gestionador(object):
             if( len(component_string) == 0 ) : 
                 print('error no element ')
             else : 
-                if(replace_component(keys_string,component_string) ):
+                if(replace_pair_key_component(keys_string,component_string) ):
                     self.Key_input.clear()
                     self.new_compnent_input.clear()
                 else: 
@@ -2031,20 +2035,20 @@ class Ui_Gestionador(object):
     def save_point(self):
         element_input = self.elemnt_input.text() 
         key,dimention_value = split_input(element_input)
+        dimention_value = int(dimention_value)
 
-        if( int(dimention_value) >= 0 and int(dimention_value) < 16):
-            if(find_key(key) ):
-                component,size = get_info(key,dimention_value)
-                add_size_mesuare(size)
-
-                port = init_port()
-                save_new_point(1,port,component,size)
+        if( dimention_value >= 0 and dimention_value < 16):
+            if(there_is_component(key) ):
+                add_size(dimention_value)
+                add_components_count(key)
+                # port = init_port()
+                # save_new_point(1,port,component,size)
                 
                 self.lcd_counter.display(number_components()-1)
-                self.update_table(component,size)
-                self.graphicsView.clear()
-                self.graphicsView_2.clear()
-                self.draw_size()
+                # self.update_table(component,size)
+                # self.graphicsView.clear()
+                # self.graphicsView_2.clear()
+                # self.draw_size()
                 
             else :
                 print("No exists")

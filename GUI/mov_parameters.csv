@@ -1,4 +1,4 @@
-connection_status:False
-port_name:ttyUSB0
-step:20
-speed:10
+connection_status:1
+port_name:0
+step:1
+speed:0
