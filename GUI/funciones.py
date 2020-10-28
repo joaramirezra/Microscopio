@@ -110,7 +110,7 @@ def size_translation(dimention_value):
 	return dim_reference_1[index]
 
 #-------------------------------------------------------------------------------        
-def get_info(key,dimention_value):
+def get_info2(key,dimention_value):
 	component = get_component(key)
 	size = size_translation(dimention_value)
 	return component,size

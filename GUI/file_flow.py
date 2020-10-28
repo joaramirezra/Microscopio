@@ -1,4 +1,4 @@
-# file managment functions 
+# file managment functions to control 
 
 #-------------------------------------------------------------------------------        
 def clean_file():
