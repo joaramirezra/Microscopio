@@ -10,7 +10,7 @@ def reset_all():
     [create_file(i) for i in range(6) ]
     
 def add_point(key,size):
-    status,portname,step,_ = get_mov_parameters()
+    status,_,step,_ = get_mov_parameters()
     max_counter,counter = map(int,get_count_parameters()[:2])
         
     if(status == '0' or status == 'False'):
