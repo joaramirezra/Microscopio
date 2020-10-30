@@ -80,14 +80,6 @@ def add_components(count ,coor_x ,coor_y,Component, Size):
 	[file.write((",".join([value for value in values])+ str('\n')))]
 	file.close()
 
-def get_components():
-	file = open("components.csv","r")
-	lines = file.readlines()
-	file.close()
-	return (lines[len(lines)-1].replace('\n','').split(','))[3:]
-	# return (lines[len(lines)].replace('\n','')).split(',')
-
-print(get_components())
 #-------------------------------------------------------------------------------        
 def add_size(Size):
 	file = open("size-count.csv","r+")
@@ -281,3 +273,22 @@ def set_count_parameters_on(counter,x,y):
 	for paramet,value in zip(parameters, param):
 		print (":".join([paramet,value]))
 		file.write(":".join([paramet,value])+str('\n'))
+	
+#-------------------------------------------------------------------------------
+def get_components():
+	file = open("components.csv","r")
+	lines = file.readlines()
+	file.close()
+	return (lines[len(lines)-1].replace('\n','').split(','))[-2:]
+
+#-------------------------------------------------------------------------------
+def get_key(component):
+	file = open("pair_compenents_key.csv","r+")	
+	pair  = [line.replace('\n','').split(':') for line in file.readlines()]
+	file.close()
+
+	list_value = [par[1] == component for par in pair]
+	index = list_value.index(True)
+	return pair[index][0]
+	
+print(get_key('wolframio'))
