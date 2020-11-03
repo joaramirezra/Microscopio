@@ -66,7 +66,6 @@ def set_count_parameters_off(counter):
 	parameters = ["max_count","counter","coor_x","coor_y",'x_limit','y_limit']
 	param = get_count_parameters()
 	param[1] = str(counter)
-	print(param)
 	file = open("count_parameters.csv","w")
 	for paramet,value in zip(parameters, param):
 		file.write(":".join([paramet,value])+str('\n'))
@@ -139,50 +138,26 @@ def new_component_count(new_component):
 
 #-------------------------------------------------------------------------------        
 def there_is_component(key_to_check):
-	components=[]
-	keys=[]
-	try:
-		file = open("pair_compenents_key.csv","r+")
-	except:
-		file = open("pair_compenents_key.csv","w+")
-
-	lines = file.readlines()
-	if(len(lines)>0):
-		for line in lines : 
-			key ,component= line.split(':')
-			keys.append(key)
-			components.append(component)
-
+	file = open("pair_compenents_key.csv","r")
+	keys = [line.replace('\n','').split(':')[0] for line in file.readlines()]
+	file.close()
 	return ( True if(key_to_check in keys) else False)
 	
 #-------------------------------------------------------------------------------        
 def replace_pair_key_component(new_key,new_component):
-	components=[]
-	keys=[]
-	try:
-		file = open("pair_compenents_key.csv","r+")
-	except:
-		file = open("pair_compenents_key.csv","w+")
-
+	file = open("pair_compenents_key.csv","r")
 	lines = file.readlines()
+	keys =[line.replace('\n','').split(':')[0] for line in lines]
+	file.close()
 
-	if(len(lines)>0):
-		for line in lines : 
-			key ,component= line.split(':')
-			keys.append(key)
-			components.append(component)
+	index = keys.index(str(new_key)) 
+	lines[index]= str(new_key)+str(":")+str(new_component)+str('\n')
 	
-	if(str(new_key) in keys):
-		file.close()
-		file = open("pair_compenents_key.csv","w")
-		new_line = str(new_key)+str(":")+str(new_component) + str('\n')
-		index = keys.index(str(new_key)) 
-		lines[index]= new_line
-		[file.write(line) for line in lines]
-		file.close()
-		return True
-	else:
-		return False
+	file = open("pair_compenents_key.csv","w")
+	[file.write(line) for line in lines]
+	file.close()
+
+	return True
 
 #-------------------------------------------------------------------------------        
 def get_info(key_to_find):
@@ -208,14 +183,11 @@ def get_info(key_to_find):
 
 #-------------------------------------------------------------------------------        
 def replace_component_count(new_key,new_component):
-	try:
-		file = open("compenents-count.csv","r+")
-	except:
-		file = open("compenents-count.csv","w+")
-
+	file = open("compenents-count.csv","r")
+	
 	lines = file.readlines()
 	_,index = get_info(new_key)
-	count = lines[index].split(':')[1]
+	count = lines[index].replace('\n','').split(':')[1]
 	new_line = str(new_component)+str(":")+str(count) + str('\n')
 
 	lines[index] = new_line
@@ -268,7 +240,6 @@ def set_count_parameters_on(counter,x,y):
 	parameters = ["max_count","counter","coor_x","coor_y",'x_limit','y_limit']
 	param = get_count_parameters()
 	param[1],param[2],param[3] = map(str,[counter,x,y])
-	print(param)
 	file = open("count_parameters.csv","w")
 	for paramet,value in zip(parameters, param):
 		print (":".join([paramet,value]))
@@ -357,3 +328,38 @@ def delete_last_lines_component_list():
 	[file.write(line) for line in lines[:len(lines)-1]]	
 	file.close()
 
+# - Others
+
+def split_input(input_string):
+	key =[]
+	for w in list(input_string):
+		if(w.isalpha()):
+			key.append(w)
+		else :
+			break
+	key = "".join(key)
+	if(len(key)<len(input_string)):
+		size = input_string[len(key):]	
+	else :
+		size = "-1"
+
+	if(size.isdigit()):
+		return key,size
+	else:
+		return key,-1
+
+def get_components_to_print():
+	file = open("compenents-count.csv","r+")
+	pairs = [line.replace('\n','').split(':') for line in file.readlines()]
+	file.close()
+	components = [pair[0] for pair in pairs]
+	counts = [pair[1] for pair in pairs]
+	return components,counts
+
+def get_size_to_print():
+	file = open("size-count.csv","r+")
+	pairs = [line.replace('\n','').split(':') for line in file.readlines()]
+	file.close()
+	components = [pair[0] for pair in pairs]
+	counts = [pair[1] for pair in pairs]
+	return components,counts

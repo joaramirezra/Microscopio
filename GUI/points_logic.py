@@ -25,9 +25,9 @@ def add_point(key,size):
             component,_ = get_info(key)
             size =get_size(size)
             add_components(counter,'0','0',component,size)
-            print('added')
+            return True
         else:
-            print('not added')
+            return False
     
     elif(status == 'True' or status == '1' ):
         if(max_counter>counter and there_is_component(key)):
@@ -41,8 +41,9 @@ def add_point(key,size):
                 component,_ = get_info(key)
                 size =get_size(size)
                 add_components(counter,x,y,component,size)
+                return True
             else:
-                print('not added')
+                return False
     
 #-------------------------------------------------------------------------------        
 def erase_last():
@@ -71,7 +72,7 @@ def erase_last():
             print('erased')
     
 #-----------------------------test--------------------------------------------
-reset_all()
+# reset_all()
 # # from Components_logic import fill_to_test
 # # fill_to_test()
 # import time
