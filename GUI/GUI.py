@@ -1966,7 +1966,8 @@ class Ui_Gestionador(object):
     def setup_button(self):
         new_step = self.Step_spinbox.value()
         new_speed = self.speed_spinbox.value()
-        setup(new_step, new_speed)   
+        setup(new_step, new_speed)
+          
     
     def home_action(self):
         send_home()
@@ -2025,12 +2026,18 @@ class Ui_Gestionador(object):
             
 #-------------------------------------------------------------------------------
     def back_action(self):
-        erase_last()        
+        erase_last()
+        self.update_interface()        
+
+#-------------------------------------------------------------------------------
+    def reset_counting(self):
+        reset_all()
+        self.update_interface()  
+        self.erase_table()      
 
     def update_interface(self):
         max_count,counter,x,y = get_count_parameters()[:4]
         percentage = (float(counter)/float(max_count))*100
-        print(percentage)
         self.graphicsView.clear()
         self.graphicsView_2.clear()
         self.draw_size()
@@ -2040,19 +2047,8 @@ class Ui_Gestionador(object):
         self.counter_progress.setFormat("%.02f %%" % percentage)
         # self.counter_progress.setValue(percentage)
 
-                    
-                    
-                
-#-------------------------------------------------------------------------------
-    def reset_counting(self):
-        self.graphicsView.clear()
-        self.graphicsView_2.clear()
-        self.erase_table()
-        reset_all()
-
 #-------------------------------------------------------------------------------
     def update_table(self,new_element,new_size):
-        print('here')
         # move a row elements   
         for x in reversed(range(1,7)):
             element_change = self.last_componet_table.item(x, 0)
@@ -2063,25 +2059,6 @@ class Ui_Gestionador(object):
         # then print the new last last element 
         self.last_componet_table.item(0, 0).setText(new_element)
         self.last_componet_table.item(0, 1).setText(new_size)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #-------------------------------------------------------------------------------
     def reference_pop(self):

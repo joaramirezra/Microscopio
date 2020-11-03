@@ -6,6 +6,7 @@ from Files_management import cal_new_coordinates,set_count_parameters_on
 from Files_management import add_components,get_size,reduce_key_and_size_count
 from Files_management import get_last_component_size,delete_last_lines_component_list
 from setup_logic import get_mov_parameters
+from Serial_comunication import send_value
 
 #-------------------------------------------------------------------------------        
 def reset_all():
@@ -41,6 +42,8 @@ def add_point(key,size):
                 component,_ = get_info(key)
                 size =get_size(size)
                 add_components(counter,x,y,component,size)
+                send_value(str(mov))
+
                 return True
             else:
                 return False
@@ -48,7 +51,7 @@ def add_point(key,size):
 #-------------------------------------------------------------------------------        
 def erase_last():
     status,_,step,_ = get_mov_parameters()
-    max_counter,counter = map(int,get_count_parameters()[:2])
+    _,counter = map(int,get_count_parameters()[:2])
         
     if(counter>0):
         if(status == '0' or status == 'False'):
@@ -57,7 +60,6 @@ def erase_last():
             counter -= 1
             set_count_parameters_off(counter)
             delete_last_lines_component_list()	       
-            print('erased')
     
         elif(status == 'True' or status == '1' ):
             key, size = get_last_component_size()
@@ -68,7 +70,9 @@ def erase_last():
             x,y = cal_new_coordinates(int(step),mov)
             
             set_count_parameters_on(counter,x,y)
-            delete_last_lines_component_list()	       
+            delete_last_lines_component_list()	
+
+            send_value(str(mov))       
             print('erased')
     
 #-----------------------------test--------------------------------------------
