@@ -2029,7 +2029,7 @@ class Ui_Gestionador(object):
                 else: 
                     print('error existing key')
         else:
-            print ('error key with number or too long')
+            print ('error key  number or too long')
 
 #-------------------------------------------------------------------------------        
     def save_point(self):
@@ -2105,7 +2105,7 @@ class Ui_Gestionador(object):
         self.key_label.setText(_translate("Gestionador", "Letra(s)"))
         self.Save_element_button.setText(_translate("Gestionador", "Agregar"))
         self.replace_element_button.setText(_translate("Gestionador", "reemplazar"))
-        self.component_label.setText(_translate("Gestionador", "Elemento"))
+        self.component_label.setText(_translate("Gestionador", "Mineral"))
         self.last_componet_table.setSortingEnabled(True)
         item = self.last_componet_table.verticalHeaderItem(0)
         item.setText(_translate("Gestionador", "01"))

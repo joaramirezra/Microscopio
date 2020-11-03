@@ -71,7 +71,7 @@ def erase_last():
             print('erased')
     
 #-----------------------------test--------------------------------------------
-    # # reset_all()
+reset_all()
 # # from Components_logic import fill_to_test
 # # fill_to_test()
 # import time
