@@ -1,4 +1,4 @@
-connection_status:True
-port_name:0
+connection_status:1
+port_name:/dev/ttyUSB0
 step:1
-speed:1
+speed:10

@@ -1,5 +1,4 @@
-# this file helps to manage some files
-
+# this file helps to manage some files  
 #-------------------------------------------------------------------------------        
 def create_file(reference):
 	files = ["mov_parameters.csv","count_parameters.csv","components.csv",
@@ -13,7 +12,7 @@ def create_file(reference):
 
 	elif (reference == 1):
 		parameters = ["max_count","counter","coor_x","coor_y","x_limit","y_limit"]
-		change_count_parameters(300,0,0,0,40,20)
+		change_count_parameters(300,0,0,0,80,50)
 
 	elif (reference == 2):
 		tittle = ";".join(["count" ,"coor x" , "coor y","Component", "Size"])
@@ -30,7 +29,7 @@ def create_file(reference):
 def change_mov_parameters(status,portname,step,speed):
 	file = open("mov_parameters.csv","w")
 	
-	status = True if (status=="1") else False
+	status = '1' if (status=="1") else '0'
 	parameters = ["connection_status","port_name","step","speed"]
 	values = [str(status),str(portname),str(step),str(speed)] 
 	
@@ -242,7 +241,6 @@ def set_count_parameters_on(counter,x,y):
 	param[1],param[2],param[3] = map(str,[counter,x,y])
 	file = open("count_parameters.csv","w")
 	for paramet,value in zip(parameters, param):
-		print (":".join([paramet,value]))
 		file.write(":".join([paramet,value])+str('\n'))
 	
 #-------------------------------------------------------------------------------

@@ -1,26 +1,30 @@
 import serial
 import time
+from Files_management import get_mov_parameters,change_mov_parameters
 
 #-------------------------------------------------------------------------------
-def create_port(port):
-    port = str('/dev/')+port
+def create_port():
+    port = get_mov_parameters()[1]
     try:
         ser = serial.Serial(port=port,baudrate=9600,timeout=1)
         return ser
     except:
         print('Open port failded')
+        change_mov_parameters('0',port,'0','0')
         return False
 
 #-------------------------------------------------------------------------------
-def open_port(ser):
+def port_status(ser):
     if(ser.isOpen()):
-        return True
+        if(get_mov_parameters()[0] == "1" or get_mov_parameters()[0] == "True"):
+            return True
     else: 
         try:
-            ser.open()
+            create_port()
             return True
         except:
             print("error opening")
+            change_mov_parameters('0',get_mov_parameters()[1],'0','0')
             return False
 
 #-------------------------------------------------------------------------------
@@ -28,24 +32,14 @@ def close_port(ser):
     ser.close()
 
 #-------------------------------------------------------------------------------
-def send_value(value,ser):
-	string = "".join([str(value),' \n'])
-	ser.write(string.encode())
-
-
-# import time
-# def prueba_cuadrado():
-#     port = create_port('ttyUSB0')
-#     send_value("5,10,60",port)
-#     time_1 = 4
-#     while True:
-#         send_value("1",port)
-#         time.sleep(time_1)
-#         send_value("4",port)
-#         time.sleep(time_1)
-#         send_value("2",port)
-#         time.sleep(time_1)
-#         send_value("3",port)
-#         time.sleep(time_1)
-
-# prueba_cuadrado()
+def send_value(value):
+    port = create_port()
+    status = get_mov_parameters()[0]
+    if(port_status(port)):
+        if(status == '1' or status == 'True'):
+            string = "".join([str(value),' \n'])
+            port.write(string.encode())
+            print('True')
+    else :
+        print('False')
+    
