@@ -6,6 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+from points_logic import *
+
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5 import QtCore, QtGui, QtWidgets
 
