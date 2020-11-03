@@ -6,21 +6,24 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+from setup_logic import *
+from Components_logic import *
 from points_logic import *
+from Files_management import get_components,split_input,get_components_to_print
+from Files_management import get_size_to_print
 
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from pyqtgraph import PlotWidget
 
-from funciones import *
-from Logic import next_point
-from file_flow import number_components,create_title
+# from funciones import *
+# from Logic import next_point
+# from file_flow import number_components,create_title
 import sys
-from coor import save_new_point,init_port
-
-from Files_management import add_pair_key_component,replace_pair_key_component
-from Files_management import there_is_component,get_info,add_size,add_components_count
+# from coor import save_new_point
+# from Files_management import add_pair_key_component,replace_pair_key_component
+# from Files_management import there_is_component,get_info,add_size,add_components_count
 
 
 class Ui_Gestionador(object):
@@ -1940,46 +1943,37 @@ class Ui_Gestionador(object):
 
 #-------------------------------------------------------------------------------
 # callbacks 
-        self.begin_button.clicked.connect(self.move_init)
-        self.home_button.clicked.connect(home)
+        self.begin_button.clicked.connect(self.setup_button)
+        self.home_button.clicked.connect(self.home_action)
+
         self.Save_element_button.clicked.connect(self.add_element)
+        self.replace_element_button.clicked.connect(self.replace_component_act)
+
         self.next_button.clicked.connect(self.save_point)
-        self.erase_last_button.clicked.connect(erase) 
+        self.erase_last_button.clicked.connect(self.back_action) 
         self.restart_counting_button.clicked.connect(self.reset_counting)
+        
         self.Size_reference_button.clicked.connect(self.reference_pop)      
-        self.replace_element_button.clicked.connect(self.replace)
+        
         # call when enter is presed
         self.elemnt_input.returnPressed.connect(self.save_point) 
         self.new_compnent_input.returnPressed.connect(self.add_element)
         
-#-------------------------Functions---------------------------------------------
-#-------------------------------------------------------------------------------
-    def reset_counting(self):
-        self.graphicsView.clear()
-        self.graphicsView_2.clear()
-        self.erase_table()
-        create_title()
-        reset()
-        init_size_dict()
-        pass
+#+++++++++++++++++++++++++++++++++++Functions+++++++++++++++++++++++++++++++++++
 
+#+++++++++++++++++++++++++++++++++++setup+++++++++++++++++++++++++++++++++++++++
 #-------------------------------------------------------------------------------
-    def reference_pop(self):
-        option=QFileDialog.Options()
-        option|=QFileDialog.DontUseNativeDialog
-        file=QFileDialog.getSaveFileName(widget,"Save File Window Title",
-                                "compuestos.csv","All Files (*)",options=option)
-        print(file[0])
-        
-#-------------------------------------------------------------------------------       
-    def move_init(self):
-        step_setup = self.Step_spinbox.value()
-        speed_setup = self.speed_spinbox.value()
-        move_setup(speed_setup,step_setup)
+    def setup_button(self):
+        new_step = self.Step_spinbox.value()
+        new_speed = self.speed_spinbox.value()
+        setup(new_step, new_speed)   
+    
+    def home_action(self):
+        send_home()
 
-#-------------------------------------------------------------------------------    
+#+++++++++++++++++++++++++++++++++++components++++++++++++++++++++++++++++++++++
+#-------------------------------------------------------------------------------
     def add_element(self):
-
         keys_string = self.Key_input.text()
         component_string = self.new_compnent_input.text()
 
@@ -1987,7 +1981,7 @@ class Ui_Gestionador(object):
             if( len(component_string) == 0 ) : 
                 print('error no element ')
             else : 
-                if(add_pair_key_component(keys_string,component_string) ):
+                if(add_new_component(keys_string,component_string)):
                     self.Key_input.clear()
                     self.new_compnent_input.clear()
                 else: 
@@ -1995,8 +1989,70 @@ class Ui_Gestionador(object):
         else:
             print ('error key with number or too long')
 
+#-------------------------------------------------------------------------------        
+    def replace_component_act(self):
+        keys_string = self.Key_input.text()
+        component_string = self.new_compnent_input.text()
+
+        if(len(keys_string) < 4  and keys_string.isalpha() ):
+            if( len(component_string) == 0 ) : 
+                print('error no element ')
+            
+            elif(replace_components(keys_string,component_string) ):
+                self.Key_input.clear()
+                self.new_compnent_input.clear()
+
+        else:
+            print ('error key  number or too long')
+
+#+++++++++++++++++++++++++++++++++++Points++++++++++++++++++++++++++++++++++++++
+
+    def save_point(self):
+        element_input = self.elemnt_input.text() 
+        key,size = split_input(element_input)
+        size = int(size)
+        if( size >= 0 and size < 16):
+            if(there_is_component(key)):
+                if(add_point(key,size)):
+                    component, size = get_components()
+                    self.update_table(component,size)
+                    self.update_interface()
+            else :
+                print("No exists")
+        
+        else:
+            print("size out range")
+            
+#-------------------------------------------------------------------------------
+    def back_action(self):
+        erase_last()        
+
+    def update_interface(self):
+        max_count,counter,x,y = get_count_parameters()[:4]
+        percentage = (float(counter)/float(max_count))*100
+        print(percentage)
+        self.graphicsView.clear()
+        self.graphicsView_2.clear()
+        self.draw_size()
+        self.lcd_counter.display(counter)
+        self.coor_point_out.setText(str('[ ')+" , ".join([x,y])+str(' ]'))
+        self.elemnt_input.clear()
+        self.counter_progress.setFormat("%.02f %%" % percentage)
+        # self.counter_progress.setValue(percentage)
+
+                    
+                    
+                
+#-------------------------------------------------------------------------------
+    def reset_counting(self):
+        self.graphicsView.clear()
+        self.graphicsView_2.clear()
+        self.erase_table()
+        reset_all()
+
 #-------------------------------------------------------------------------------
     def update_table(self,new_element,new_size):
+        print('here')
         # move a row elements   
         for x in reversed(range(1,7)):
             element_change = self.last_componet_table.item(x, 0)
@@ -2008,6 +2064,33 @@ class Ui_Gestionador(object):
         self.last_componet_table.item(0, 0).setText(new_element)
         self.last_componet_table.item(0, 1).setText(new_size)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------------------------------------------------
+    def reference_pop(self):
+        option=QFileDialog.Options()
+        option|=QFileDialog.DontUseNativeDialog
+        file=QFileDialog.getSaveFileName(widget,"Save File Window Title",
+                                "compuestos.csv","All Files (*)",options=option)
+        print(file[0])
+        
 #-------------------------------------------------------------------------------        
     def erase_table(self):
         for x in reversed(range(0,7)):
@@ -2015,67 +2098,26 @@ class Ui_Gestionador(object):
             size = self.last_componet_table.item(x, 1)
             element_change.setText("")
             size.setText("")
-
-#-------------------------------------------------------------------------------        
-    def replace(self):
-        keys_string = self.Key_input.text()
-        component_string = self.new_compnent_input.text()
-
-        if(len(keys_string) < 4  and keys_string.isalpha() ):
-            if( len(component_string) == 0 ) : 
-                print('error no element ')
-            else : 
-                if(replace_pair_key_component(keys_string,component_string) ):
-                    self.Key_input.clear()
-                    self.new_compnent_input.clear()
-                else: 
-                    print('error existing key')
-        else:
-            print ('error key  number or too long')
-
-#-------------------------------------------------------------------------------        
-    def save_point(self):
-        element_input = self.elemnt_input.text() 
-        key,dimention_value = split_input(element_input)
-        dimention_value = int(dimention_value)
-
-        if( dimention_value >= 0 and dimention_value < 16):
-            if(there_is_component(key) ):
-                add_size(dimention_value)
-                add_components_count(key)
-                # port = init_port()
-                # save_new_point(1,port,component,size)
-                
-                self.lcd_counter.display(number_components()-1)
-                # self.update_table(component,size)
-                # self.graphicsView.clear()
-                # self.graphicsView_2.clear()
-                # self.draw_size()
-                
-            else :
-                print("No exists")
-        
-        else:
-            print("size out range")
-            
-        self.elemnt_input.clear()
-
     
 #-------------------------------------------------------------------------------
     def draw_size(self):
-        components_name ,components_count = count_element() 
-        size_name , size_count  = count_sizes()
+        components ,components_count = map(list,get_components_to_print()) 
+        sizes , sizes_count  = map(list,get_size_to_print())
 
-        x = range(len(components_count)+1)
-
-        self.graphicsView.plot(list(range(17)),list(size_count), stepMode=True,
+        components_count = [int(comp) for comp in components_count] 
+        sizes_count = [int(size) for size in sizes_count]
+        
+        x = list(range(len(components_count)+1))
+        
+        self.graphicsView.plot(list(range(18)),sizes_count, stepMode=True,
                                fillLevel=0, brush=("#9fccb8"))
         
-        self.graphicsView_2.plot(x,list(components_count), stepMode=True,
-                                 fillLevel=0, brush=("#9fccb8"))
+
+        self.graphicsView_2.plot(x,components_count, stepMode=True,
+                                 fillLevel=0,brush=("#9fccb8"))
         
-        self.label_axis(components_name,2)
-        self.label_axis(size_name,1)
+        self.label_axis(components,2)
+        self.label_axis(sizes,1)
 
 #-------------------------------------------------------------------------------
     def label_axis(self,names_componens,grah):

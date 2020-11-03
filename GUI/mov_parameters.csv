@@ -1,4 +1,4 @@
-connection_status:0
+connection_status:True
 port_name:0
-step:0
-speed:0
+step:1
+speed:1
