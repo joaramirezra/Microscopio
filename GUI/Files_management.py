@@ -80,14 +80,6 @@ def add_components(count ,coor_x ,coor_y,Component, Size):
 	[file.write((",".join([value for value in values])+ str('\n')))]
 	file.close()
 
-def get_components():
-	file = open("components.csv","r")
-	lines = file.readlines()
-	file.close()
-	return (lines[len(lines)-1].replace('\n','').split(','))[3:]
-	# return (lines[len(lines)].replace('\n','')).split(',')
-
-print(get_components())
 #-------------------------------------------------------------------------------        
 def add_size(Size):
 	file = open("size-count.csv","r+")
@@ -281,3 +273,87 @@ def set_count_parameters_on(counter,x,y):
 	for paramet,value in zip(parameters, param):
 		print (":".join([paramet,value]))
 		file.write(":".join([paramet,value])+str('\n'))
+	
+#-------------------------------------------------------------------------------
+def get_components():
+	file = open("components.csv","r")
+	lines = file.readlines()
+	file.close()
+	return (lines[len(lines)-1].replace('\n','').split(','))[-2:]
+
+#-------------------------------------------------------------------------------
+def get_key(component):
+	file = open("pair_compenents_key.csv","r+")	
+	pair  = [line.replace('\n','').split(':') for line in file.readlines()]
+	file.close()
+
+	list_value = [par[1] == component for par in pair]
+	index = list_value.index(True)
+	return pair[index][0]
+
+#-------------------------------------------------------------------------------
+def get_dimention(Size):
+	file = open("size-count.csv","r+")
+	lines = [line.replace('\n','').split(':') for line in file.readlines()]
+	file.close()
+
+	list_value = [par[0] == Size for par in lines]
+	index = list_value.index(True)
+	return index
+	
+#-------------------------------------------------------------------------------
+def reduce_size(Size):
+	file = open("size-count.csv","r+")
+	lines = file.readlines()
+
+	value,count = lines[Size].split(":")
+	count = int(count)-1 
+	count = (0 if (count<0) else count)
+	file.close()
+	file = open("size-count.csv","w")
+
+	lines[Size] = ":".join([value,str(count)])+str('\n')
+	
+	[file.write(line) for line in lines]
+	file.close()	
+
+#-------------------------------------------------------------------------------
+def reduce_components_count(new_key):
+	_,index=get_info(new_key)
+	
+	file = open("compenents-count.csv","r+")
+	
+	lines = file.readlines()
+	component,count = lines[index].split(':')
+	count = (0 if (int(count)<1) else (int(count)-1))
+	line = ":".join([component,str(count)])+str('\n')
+	lines[index] = line
+	file.close()
+	file = open("compenents-count.csv","w")
+	[file.write(line) for line in lines]
+	file.close()
+	return True	
+
+#-------------------------------------------------------------------------------
+def get_last_component_size():
+	# component = ()
+	component, size = get_components()
+	key = get_key(component)
+	size = get_dimention(size)
+	return key, size
+
+#-------------------------------------------------------------------------------
+def reduce_key_and_size_count(key,size):
+	reduce_components_count(key)
+	reduce_size(size)
+
+#-------------------------------------------------------------------------------
+def delete_last_lines_component_list():
+	file = open("components.csv","r")
+	lines = file.readlines()
+	file.close()
+
+	file = open("components.csv","w")
+	[file.write(line) for line in lines[:len(lines)-1]]	
+	file.close()
+
