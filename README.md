@@ -4,14 +4,14 @@
 
 ## Description
 
-this project aims to discribe the components of a element counter system for a microscope
+this project aims to help geologist on the count of minerals in thin sections, this is reach by mineral counter system installed on a microscope 
 
 ## Software 
 
 
-- kicad 5
-- arduino 18.04
-- python 3.6
+- [python 3.6](https://www.python.org/downloads/)
+- [pyQT5](https://pypi.org/project/PyQt5/)
+- [arduino 18.04]
 
 ## libreries
 - PYQT5
