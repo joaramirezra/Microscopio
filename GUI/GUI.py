@@ -2222,3 +2222,4 @@ if __name__ == "__main__":
     Gestionador.show()
     sys.exit(app.exec_())
 
+
