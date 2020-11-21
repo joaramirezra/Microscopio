@@ -1,1 +1,9 @@
 count;coor x;coor y;Component;Size 
+1,50,1,analsita,<1e-3
+2,49,1,analsota,2e-3
+3,48,1,asalto,2e-3
+4,0,0,asalto,2e-3
+5,0,0,asalto,2e-3
+6,0,0,asalto,2e-3
+7,0,0,asalto,5e-3
+8,0,0,wolframio,0.01
