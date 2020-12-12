@@ -18,6 +18,8 @@ this project aims to help geologist on the count of minerals in thin sections, t
 - time
 - pyserial
 - os
+## images
+
 
 # Autores
 
