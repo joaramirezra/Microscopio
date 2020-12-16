@@ -7,9 +7,9 @@ El siguiente repositorio cuenta con la informacion necesaria para ejecutar un si
  - Dispositivo de comunicacion entre el carro de conteo y el PC (opcional)
 
 El sistema de funcionamiento cuenta con una interfaz de usuario como se muestra a continuacion 
-
-<center><img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/interfazV1.png" width="400" height="255">
-</center>
+<p align="center">
+ <img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/interfazV1.png" width="400" height="255">
+</p>
 
 En ella podemos observar 5 secciones :
 
@@ -21,8 +21,9 @@ En ella podemos observar 5 secciones :
  
 Esta secciones permiten al usuario interactuar con el dispositivo fisico (si se posee) de tal manera que a medida que se van agregando minerales al conteo, estos de manera automatica se actualizan en la interfaz de usuario
 
-<center><img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/Untitled%20drawing.png" width="400" height="255">
-
+<p align="center">
+<img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/Untitled%20drawing.png" width="400" height="255" >
+</p>
 
 
 ## Instalación 
