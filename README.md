@@ -8,7 +8,8 @@ El siguiente repositorio cuenta con la informacion necesaria para ejecutar un si
 
 El sistema de funcionamiento cuenta con una interfaz de usuario como se muestra a continuacion 
 
-![imagen de la interfaz grafica](something)
+<center><img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/interfazV1.png" width="400" height="255">
+</center>
 
 En ella podemos observar 5 secciones :
 
@@ -19,6 +20,10 @@ En ella podemos observar 5 secciones :
  5. Graficas del total de elementos agregados
  
 Esta secciones permiten al usuario interactuar con el dispositivo fisico (si se posee) de tal manera que a medida que se van agregando minerales al conteo, estos de manera automatica se actualizan en la interfaz de usuario
+
+<center><img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/Untitled%20drawing.png" width="400" height="255">
+
+
 
 ## Instalación 
 
