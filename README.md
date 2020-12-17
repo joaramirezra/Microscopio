@@ -19,12 +19,11 @@ En ella podemos observar 5 secciones :
  4. Resumen de minerales recientemente agregados
  5. Graficas del total de elementos agregados
  
-Esta secciones permiten al usuario interactuar con el dispositivo fisico (si se posee) de tal manera que a medida que se van agregando minerales al conteo, estos de manera automatica se actualizan en la interfaz de usuario
+Esta secciones permiten al usuario interactuar con el dispositivo fisico (si se posee) de tal manera que a medida que se van agregando minerales al conteo, estos de manera automatica se actualizan en la interfaz de usuario a medida que la seccion delgada se mueve de manera automatica 
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/Untitled%20drawing.png" width="400" height="255" >
 </p>
-
 
 ## Instalación 
 
@@ -33,12 +32,34 @@ El proceso de instalaccion consiste en la correcta instalacion de las siguientes
     - [pyQT5](https://pypi.org/project/PyQt5/)
     - [pySerial](https://pyserial.readthedocs.io/en/latest/pyserial.html#installation)
   
-Ademas de la correcta instalacion de las dependencias se recomienda utilizar un programa para detectar los puertos este puede ser 
+Ademas de la  instalacion de las dependencias se recomienda utilizar un programa para detectar los puertos este puede ser :
 - [Arduino](https://www.arduino.cc/en/software)
 - [PuTTY](https://www.putty.org/)
 - ó cualquiera a elección 
 
-## Chequeo de la integridad de la instalacion 
+### checkeo requetimientos ( integridad instalacion )
+
+Una vez instaladas las dependencias, entrar al directorio :
+
+```
+./pruebas/instalacion/
+```
+
+Alli encontrara el scrip llamado `test.py` , al ejecutarse debera obtener una respuesta como la siguiente : 
+
+``` 
+Dependencias correctamente instaladas
+```
+
+## Puesta en marcha 
+
+
+
+
+
+
+
+
 
 ### (Previo) Deteccion de puertos 
   
