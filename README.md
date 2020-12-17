@@ -51,8 +51,41 @@ Alli encontrara el scrip llamado `test.py` , al ejecutarse debera obtener una re
 Dependencias correctamente instaladas
 ```
 
-## Puesta en marcha 
+## Puesta en marcha (omitir este paso si no se posee el carro de secciones delgadas)
 
+Para la correcta deteccion del puerto se recomienda seguir con los siguientes paso :
+ 1. Conexion previa : la conexion se debe realizar como se muestra en el siguiente diagrama
+ 
+ ![imagen1]()
+ 
+  alli se debe conectar el dispositivo a una fuente de voltaje de 120 Vac (toma corriente en Colombia), en ese instante debe encender una luz led como se muestra en la siguiente Imagen 
+ 
+ ![imagen1]()
+
+  Una vez conectado la alimentacion del dispositivo, se debe conectar un cable USB entre el computador y el dispositivo, este a su vez encendera una segunda luz en el dispositvo como se muestra en la siguiente imagen:
+
+ ![imagen1]()
+ 
+ 2. Deteccion de puerto 
+ 
+ Posterior a la conexion del dispositvo se debe identificar el puerto de conexion para sincronizar el dispositivo con el programa para ello acudimos al programa arduino, (o cualquiera de su preferencia) , alli presionamos
+ 
+``` 
+Herramientas/puertos
+```
+ Debera aparecer el nombre del puerto que se relaciona al dispositvo fisico que conectamos en el paso anterior como se muestra en la siguiente imagen (el nombre del puerto puede variar)
+ 
+ ![imagen1]()
+ 
+  - Nota 1 : En caso de usar linux se recomienda dar permisos de escritura y lectura al puerto mediante el comando `sudo chmod /dev/Nombre_del_puerto` 
+  - Nota 2 : En caso de desconectar y reconectar el dispositivo asegurese que el nombre del puerto sea el mismo , en caso contrario se debe dar permisos a este nuevo puerto
+  - Nota 3 : En caso de desconectar y reconectar el dispositivo asegurese que el nombre del puerto sea el mismo , en caso contrario actualizar el nombre en la interfaz grafica 
+ 
+ 3. Sincronizacion del dispositivo 
+ 
+ Una vez se tiene el identificado el nombre del puerto y el dispositvo este correctamente conectado, se debe introducir el nombre del puerto en la casilla nombre y presionar sincronizar, esto debera 
+  
+ 
 
 
 
