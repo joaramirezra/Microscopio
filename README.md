@@ -56,7 +56,10 @@ Dependencias correctamente instaladas
 Para la correcta deteccion del puerto se recomienda seguir con los siguientes paso :
  1. Conexion previa : la conexion se debe realizar como se muestra en el siguiente diagrama
  
- ![imagen1]()
+ <p align="center">
+ <img src="https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/Conexion.png" width="400" height="255">
+</p>
+
  
   alli se debe conectar el dispositivo a una fuente de voltaje de 120 Vac (toma corriente en Colombia), en ese instante debe encender una luz led como se muestra en la siguiente Imagen 
  
@@ -75,7 +78,7 @@ Herramientas/puertos
 ```
  Debera aparecer el nombre del puerto que se relaciona al dispositvo fisico que conectamos en el paso anterior como se muestra en la siguiente imagen (el nombre del puerto puede variar)
  
- ![imagen1]()
+ ![imagen1](https://raw.githubusercontent.com/joaramirezra/Microscopio/master/Imagenes/Readme/seleccionar-puerto-arduino-uno.png)
  
   - Nota 1 : En caso de usar linux se recomienda dar permisos de escritura y lectura al puerto mediante el comando `sudo chmod /dev/Nombre_del_puerto` 
   - Nota 2 : En caso de desconectar y reconectar el dispositivo asegurese que el nombre del puerto sea el mismo , en caso contrario se debe dar permisos a este nuevo puerto
