@@ -88,7 +88,7 @@ Herramientas/puertos
  
  Una vez se tiene el identificado el nombre del puerto y el dispositvo este correctamente conectado, se debe introducir el nombre del puerto en la casilla nombre y presionar sincronizar, esto debera 
   
- 
+7. Bibliografia 
 
 
 
