@@ -88,6 +88,9 @@ Herramientas/puertos
  
  Una vez se tiene el identificado el nombre del puerto y el dispositvo este correctamente conectado, se debe introducir el nombre del puerto en la casilla nombre y presionar sincronizar, esto debera 
   
+7. Bibliografia 
+
+
 ## Agregar Nuevo combinacion mineral 
 
 Una vez se ha sincronizado el carro con el programa es momento de iniciar a agregar los elementos a la lista de minerales que van a estar disponibles, para ello se se posee la siguientes restricciones
