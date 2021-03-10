@@ -91,8 +91,13 @@ Herramientas/puertos
 7. Bibliografia 
 
 
+## Agregar Nuevo combinacion mineral 
 
+Una vez se ha sincronizado el carro con el programa es momento de iniciar a agregar los elementos a la lista de minerales que van a estar disponibles, para ello se se posee la siguientes restricciones
 
+Es Sensible a combinaciones entre mayusculas y minisculas
+longitud maxima  3 Letras
+No soporta caracteres especiales ni numeros (estos ultimos estan reservados para hacer referencia a los tamaños)
 
 
 
